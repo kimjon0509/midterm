@@ -2,35 +2,36 @@ body {
   margin: 0;
   background-color: #eee;
   font-family: "Work Sans", sans-serif;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .container {
-  width: 90%;
-  margin: 0 auto;
+  /* display: flex; */
+  /* width: 100%; */
+  /* justify-content: space-around; */
 }
 
 header {
   background: #55d6aa;
-}
-
-header::after {
-  content: " ";
-  display: table;
-  clear: both;
+  height: 50px;
 }
 
 .logo {
-  float: left;
-  padding: 10px 0;
+}
+
+.product-search {
+  display: flex;
+  width: 400px;
 }
 
 nav {
-  float: right;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.user-bar {
+  display: flex;
 }
 
 nav ul {
@@ -40,10 +41,16 @@ nav ul {
 }
 
 nav li {
-  display: inline-block;
+  /* display: inline-block; */
   margin-left: 80px;
-  padding-top: 23px;
-  position: relative;
+  padding-top: 30px;
+  /* position: relative; */
+}
+
+.search {
+  /* flex: 1; */
+  padding-top: 25px;
+  /* width: auto; */
 }
 
 nav a {
@@ -54,15 +61,25 @@ nav a {
 }
 
 nav a:hover {
-  visibility: visible;
-  color: #000;
+  /* visibility: visible;
+  color: #000; */
 }
 
-nav a::before {
-  content: "";
-  display: block;
-  height: 5px;
-  background-color: #444;
-  position: absolute;
-  width: 100%;
+@media all and (max-width: 600px) {
+  .container {
+    flex-wrap: wrap;
+  }
+
+  .container > li {
+    flex-basis: 50%;
+  }
+}
+
+@media all and (max-width: 400px) {
+  .container > li {
+    flex-basis: 100%;
+  }
+  .search {
+    order: 1;
+  }
 }
