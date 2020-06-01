@@ -1,26 +1,15 @@
-const getAllMessages = () => {
-  return $.ajax({
-    method: "GET",
-    url: `/api/messages/`,
-  })
-}
-const getUser = (user_id) => {
-  return $.ajax({
-    method: "GET",
-    url: `/api/users/${user_id}`
-   })
-}
+
 const getAllMessagesUserSell = (user_id) => {
   return $.ajax({
     method: "GET",
-    url:`/api/messages/?seller_id=${user_id}`,
+    url:`/api/messages/sell/?seller_id=${user_id}`,
   })
 }
 
 const getAllMessagesUserBuy = (user_id) => {
   return $.ajax({
     method: "GET",
-    url:`/api/messages/?buyer_id=${user_id}`,
+    url:`/api/messages/buy/?buyer_id=${user_id}`,
   })
 }
 
@@ -45,14 +34,28 @@ const renderMessageAll = (user_id) => {
           `)
         }
       })
-}
 
-// const getMessageData = (message_id) => {
-//   return $.ajax({
-//     method: "GET",
-//     url: `/api/messages/message/${message_id}`,
-//   })
-// }
+  getAllMessagesUserBuy(user_id)
+  .then(messages => {
+    for (message of messages) {
+      $('#buy-messages').append(`
+        <a class="user-messages" id=${message.id}>
+          <div class="message-padding">
+            <div class="message-box">
+              <span class='image-padding'>
+                <img alt="user picture" src=${message.profile_photo}>
+              </span>
+              <div class="message-details">
+                <h5>${message.user_name}</h5>
+                <p>${message.content}</p>
+              </div>
+            </div>
+          </div>
+        </a>
+        `)
+      }
+    })
+}
 
 const getMessageData = (message_id) => {
   return $.ajax({
