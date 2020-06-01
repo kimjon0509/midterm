@@ -9,6 +9,11 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
+const socketio = require('socket.io')
+const http = require('http')
+
+const server = http.createServer(app)
+const io = socketio(server)
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -39,6 +44,8 @@ const favouritesRoutes = require("./routes/favourites")
 const listingsRoutes = require("./routes/listings")
 const newListingsRoutes = require("./routes/new-listings")
 const registerPageRoutes = require("./routes/register-page")
+const messagesRoutes = require("./routes/messages");
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
@@ -49,7 +56,7 @@ app.use("/api/listings", listingsRoutes(db));
 app.use("/api/new-listings", newListingsRoutes(db));
 app.use("/api/register-page", registerPageRoutes(db));
 
-
+app.use("/api/messages", messagesRoutes(db, io));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
@@ -57,6 +64,6 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
