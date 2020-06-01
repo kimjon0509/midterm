@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS locations CASCADE;
+CREATE TABLE locations (
+  id SERIAL PRIMARY KEY,
+  country VARCHAR(255) NOT NULL,
+  province VARCHAR(255),
+  city VARCHAR(255) NOT NULL,
+  postal_code VARCHAR(255) NOT NULL
+);
