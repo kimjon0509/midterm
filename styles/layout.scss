@@ -2,6 +2,7 @@ body {
   margin: 0;
   background-color: #eee;
   font-family: "Work Sans", sans-serif;
+  // <<<<<<< Updated upstream
   font-weight: 300;
 }
 
@@ -9,14 +10,16 @@ body {
   /* display: flex; */
   /* width: 100%; */
   /* justify-content: space-around; */
+  // =======
+  font-weight: 400;
+  width: 90%;
+  margin: 0;
 }
 
 header {
   background: #55d6aa;
+  // <<<<<<< Updated upstream
   height: 50px;
-}
-
-.logo {
 }
 
 .product-search {
@@ -36,7 +39,27 @@ nav {
 
 .user-bar {
   display: flex;
+  // =======
 }
+
+header ::after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+.logo {
+  float: left;
+  padding: 10px 0;
+}
+
+// nav {
+//   float: right;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+// >>>>>>> Stashed changes
 
 nav ul {
   margin: 0;
@@ -45,6 +68,7 @@ nav ul {
 }
 
 nav li {
+  // <<<<<<< Updated upstream
   /* display: inline-block; */
   margin-left: 80px;
   padding-top: 30px;
@@ -55,6 +79,11 @@ nav li {
   /* flex: 1; */
   padding-top: 25px;
   /* width: auto; */
+  // =======
+  display: inline-block;
+  margin-left: 80px;
+  padding-top: 23px;
+  // >>>>>>> Stashed changes
 }
 
 nav a {
@@ -65,6 +94,7 @@ nav a {
 }
 
 nav a:hover {
+  // <<<<<<< Updated upstream
   /* visibility: visible;
   color: #000; */
 }
@@ -86,4 +116,7 @@ nav a:hover {
   .search {
     order: 1;
   }
+  // =======
+  // color: #000;
+  // >>>>>>> Stashed changes
 }
