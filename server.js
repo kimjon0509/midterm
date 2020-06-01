@@ -40,6 +40,10 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const favouritesRoutes = require("./routes/favourites")
+const listingsRoutes = require("./routes/listings")
+const newListingsRoutes = require("./routes/new-listings")
+const registerPageRoutes = require("./routes/register-page")
 const messagesRoutes = require("./routes/messages");
 
 // Mount all resource routes
@@ -47,6 +51,11 @@ const messagesRoutes = require("./routes/messages");
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
+app.use("/api/favourites", favouritesRoutes(db));
+app.use("/api/listings", listingsRoutes(db));
+app.use("/api/new-listings", newListingsRoutes(db));
+app.use("/api/register-page", registerPageRoutes(db));
+
 app.use("/api/messages", messagesRoutes(db, io));
 // Home page
 // Warning: avoid creating more routes in this file!
