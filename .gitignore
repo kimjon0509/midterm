@@ -4,5 +4,10 @@ public/styles
 *.log
 *.sqlite3
 feature.txt
+<<<<<<< HEAD
 message-practice.html/
 messages.html/
+=======
+message-practice.html
+messages.html
+>>>>>>> master
