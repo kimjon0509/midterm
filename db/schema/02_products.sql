@@ -11,7 +11,7 @@ CREATE TABLE products (
   sub_photo2 VARCHAR(255),
   sub_photo3 VARCHAR(255),
   sub_photo4 VARCHAR(255),
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  seller_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   buyer_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   location_id INTEGER REFERENCES locations(id) ON DELETE CASCADE
 );
