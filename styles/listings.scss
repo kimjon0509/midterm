@@ -1,0 +1,36 @@
+body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.boxes_home_page {
+  border: solid;
+  width: 25%;
+  margin: 2.5em;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  word-break: break-all;
+}
+#description {
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+}
+.img_home_page {
+  width: 100%;
+}
+
+.features {
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 50%;
+  word-break: break all;
+}
+#Name {
+  font-size: 150%;
+  font-weight: bold;
+}
