@@ -28,6 +28,9 @@ nav {
   width: 100%;
   display: flex;
   justify-content: space-around;
+  background: #55d6aa;
+  height: 50px;
+  align-items: center;
 }
 
 .user-bar {
