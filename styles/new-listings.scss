@@ -1,0 +1,37 @@
+.new-title {
+  display: flex;
+  justify-content: center;
+}
+.listing-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.row1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.labels {
+  margin-right: 0.5em;
+}
+
+.last-label {
+  display: flex;
+  margin-top: 0.5em;
+  justify-content: center;
+}
+
+.description-input {
+  display: flex;
+  justify-content: center;
+  width: 315px;
+  height: 35px;
+}
+
+.new-button {
+  margin-top: 0.5em;
+  margin-left: 40%;
+  margin-right: 40%;
+}
