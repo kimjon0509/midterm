@@ -36,20 +36,25 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const favouritesRoutes = require("./routes/favourites")
-
+const listingsRoutes = require("./routes/listings")
+const newListingsRoutes = require("./routes/new-listings")
+const registerPageRoutes = require("./routes/register-page")
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
-// app.use("/api/favourites", favouritesRoutes(awer));
+app.use("/api/favourites", favouritesRoutes(db));
+app.use("/api/listings", listingsRoutes(db));
+app.use("/api/new-listings", newListingsRoutes(db));
+app.use("/api/register-page", registerPageRoutes(db));
 
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("new-listings");
+  res.render("index");
 });
 
 app.listen(PORT, () => {
