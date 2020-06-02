@@ -46,5 +46,17 @@ module.exports = (db, io) => {
     .then(data => res.json(data.rows))
   })
 
+  router.post("/", (req, res) => {
+    console.log(req.body)
+    let {product_id, text, seller_id, buyer_id, timestamp} = req.body;
+    const queryString = `
+    INSERT INTO messages (product_id, buyer_id, seller_id, content, timestamp)
+    VALUES ($1, $2, $3, $4, $5)`;
+    const queryParams = [product_id, buyer_id, seller_id, text,timestamp];
+    db.query(queryString, queryParams)
+    .then(() => {
+      res.status(201).send();
+    })
+  })
   return router;
 };
