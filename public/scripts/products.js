@@ -1,39 +1,40 @@
 const getProductSellerInfo = (product_id) => {
  return $.ajax({
   method: "GET",
-  url: "/api/products/:id"
+  url: `/api/products/${product_id}`
  });
 }
 
 const renderProductsPage = (product_id) => {
   getProductSellerInfo(product_id)
     .then(res => {
-      console.log(res);
-      $('.main-container').append(`
+      console.log(res[0]);
+      let data = res[0];
+      $('.main-content').append(`
       <div class="product-page">
         <div class="product-title">
-          <h1> iPhone</h1>
-          <p> $100 </p>
+          <h1>${data.product_name}</h1>
+          <p> $${data.price} </p>
         </div>
         <div class="centre-content">
           <div class="product-images">
             <div class="main-photo">
-              <img src="https://img.gadgethacks.com/img/93/66/63630107998081/0/your-face-could-unlock-new-iphone-8.w1456.jpg" alt="">
+              <img src=${data.main_photo} alt="main-image">
             </div>
             <div class="sub-photos">
-              <img src="https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-8-plus-0.jpg" alt="">
-              <img src="https://cnet2.cbsistatic.com/img/bPObRKPTSa3vMhoLdoXO2NjZHgs=/940x0/2020/04/15/b00d3937-cb2a-4f85-a4bf-7a47bcca2c39/apple-iphone-se-phone-2.jpg" alt="">
-              <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202003/iPhone_12-770x433.png?g98huwR6VuNvG4NggzFZSEpT85Y.Ec9q" alt="">
-              <img src="https://images.iphonephotographyschool.com/22342/481/iPhone-Photography-School-Home-Image-22x.jpg" alt="">
+              <img src=${data.sub_photo1} alt="">
+              <img src=${data.sub_photo2}" alt="">
+              <img src=${data.sub_photo3} alt="">
+              <img src=${data.sub_photo4} alt="">
             </div>
           </div>
           <div class="right-container">
             <div class="user-info">
               <div class="user-name">
-                <h3>User Name</h3>
+                <h3>${data.user_name}</h3>
               </div>
               <div class="user-image">
-                <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/user.png" alt="">
+                <img src=${data.profile_photo}alt="">
               </div>
             </div>
             <div class="message-user">
@@ -47,10 +48,10 @@ const renderProductsPage = (product_id) => {
                 <form>
                   <div class="form-layout">
                     <div class="text-input">
-                      <textarea></textarea>
+                      <textarea name="text"></textarea>
                     </div>
                     <div class="text-send">
-                      <button>Send Message</button>
+                      <input type="submit" value="Send Message"></input>
                     </div>
                   </div>
                 </form>
@@ -60,17 +61,48 @@ const renderProductsPage = (product_id) => {
         </div>
         <div class="product-description">
           <h3>Description</h3>
-          <p>This is an iPhone</p>
+          <p>${data.description}</p>
         </div>
       </div>
       `);
     });
 }
 
-$(() => {
-  $('.product-button').click(() => {
-    console.log('working')
-    $('.main-content').empty();
-    renderProductsPage(1);
+const sendMessageToDatabase = (message) => {
+  console.log(message, "this is the message")
+  return $.ajax({
+    method: "POST",
+    url: "/api/messages/",
+    data: {text: message,
+           seller_id: 2,
+           buyer_id: 1,
+           timestamp: Date.now(),
+           product_id: 2
+          },
   })
+}
+
+$(() => {
+  $('.product-click-temp').click(() => {
+    $('.main-content').empty();
+    // get product id from main page img
+    renderProductsPage(2);
+  })
+  $(document).on("click", "button" , function() {
+    const val = $(this).text();
+    $('textarea').val(val)
+  });
+
+  $(document).on("submit", "form", function(e){
+    e.preventDefault();
+    const $data = $('textarea').val()
+    sendMessageToDatabase($data)
+    .then(() => {
+      console.log('sent data reset form')
+      $('.message-user').empty();
+      $('.message-user').append(`
+      <p> Message Sent! </p>
+      `)
+      })
+    })
 })

@@ -179,6 +179,7 @@ const renderMessagesPage = () => {
 
 $(() => {
   $('.message-button').click(() => {
+    console.log("working")
     $('.main-content').empty();
     renderMessagesPage();
     renderMessageAll(1);

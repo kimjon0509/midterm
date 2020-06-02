@@ -17,12 +17,14 @@
 
 .product-title > h1 {
 	margin: 0px;
-	margin-top: 10px;
+  margin-top: 10px;
+  text-align: left;
 }
 
 .product-title > p {
 	margin: 0px;
-	font-size: 20px;
+  font-size: 20px;
+  text-align: left;
 }
 
 /*centre left */
@@ -48,7 +50,8 @@
 
 .main-photo > img {
 	width: 100%;
-	height: 100%;
+  height: 100%;
+  border-radius: 0;
 }
 
 .sub-photos {
@@ -60,7 +63,8 @@
 
 .sub-photos > img {
 	width: 100%;
-	height: 25%;
+  height: 25%;
+  border-radius: 0;
 }
 
 
@@ -78,8 +82,10 @@
 .user-info {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
+  height: 40%;
   margin-bottom: 10px;
   border: 1px solid grey;
 }
@@ -89,14 +95,21 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 50%;
+  height: 60%;
   border: 1px solid grey;
   box-sizing: border-box;
 }
 
 .user-image {
+  width: 100px;
+  height: 100px;
 	justify-content: center;
-	width: 50%;
+}
+
+.user-image > img {
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .form-block {
@@ -130,15 +143,22 @@
   border: 1px solid grey;
   border-radius: 25px;
   padding: 10px;
-  height: 50px;
+  height: 30px;
+  width: 100%;
   outline: none;
   resize: none;
+
 }
+
+.text-input > textarea:focus {
+  outline: none;
+}
+
 .text-send {
   text-align: center;
 }
 
-.text-send > button{
+.text-send > input{
   width: 90%;
   height: 30px;
   border: none;
@@ -152,13 +172,12 @@
 	height: 200px;
 	border: 1px solid grey;
 	padding: 20px;
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-img {
-	width: 100%;
+.product-description > p {
+  text-align: left;
 }
-
 
 
 
