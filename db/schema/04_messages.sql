@@ -5,5 +5,5 @@ CREATE TABLE messages (
   buyer_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   seller_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   content TEXT,
-  timestamp DATE
+  timestamp BIGINT
 );
