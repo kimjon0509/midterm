@@ -55,7 +55,7 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/favourites", favouritesRoutes(db));
 app.use("/api/listings", listingsRoutes(db));
 app.use("/api/new-listings", newListingsRoutes(db));
-app.use("/api/register-page", registerPageRoutes(db));
+app.use("/api/register", registerPageRoutes(db));
 
 app.use("/api/messages", messagesRoutes(db, io));
 app.use("/api/products", productsRoutes(db));
