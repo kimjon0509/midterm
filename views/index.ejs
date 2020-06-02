@@ -18,6 +18,7 @@
     <div class="container">
       <nav>
         <a href="/"><img src="images/bblogo.png" alt="logo" class="logo" /></a>
+        <div class="dropdown"></div>
         <ul class="product-search">
           <li><a href="#" class="product-button ">Products</a></li>
           <li class="search">
@@ -28,7 +29,11 @@
         <ul class="user-bar">
           <li><i class="far fa-heart"></i></li>
           <li><i class="message-button far fa-comment-alt"></i></li>
-          <li><i class="fas fa-user-circle"></i></li>
+          <form action="post">
+            <li>Email<input type="text" name="email" /></li>
+            <li>Password<input type="password" name="password" /></li>
+            <li><input type="submit" name="login" value="Log In" /></li>
+          </form>
         </ul>
       </nav>
     </div>
