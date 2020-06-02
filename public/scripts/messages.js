@@ -1,67 +1,83 @@
-
-const getAllMessagesUserSell = (user_id) => {
+const getAllMessages = (user_id) => {
   return $.ajax({
     method: "GET",
-    url:`/api/messages/sell/?seller_id=${user_id}`,
-  })
-}
-
-const getAllMessagesUserBuy = (user_id) => {
-  return $.ajax({
-    method: "GET",
-    url:`/api/messages/buy/?buyer_id=${user_id}`,
-  })
-}
-
-const renderMessageAll = (user_id) => {
-  getAllMessagesUserSell(user_id)
-    .then(messages => {
-      for (message of messages) {
-        $('#sell-messages').append(`
-          <a class="user-messages" id=${message.id}>
-            <div class="message-padding">
-              <div class="message-box">
-                <span class='image-padding'>
-                  <img alt="user picture" src=${message.profile_photo}>
-                </span>
-                <div class="message-details">
-                  <h5>${message.user_name}</h5>
-                  <p>${message.content}</p>
-                </div>
-              </div>
-            </div>
-          </a>
-          `)
-        }
-      })
-
-  getAllMessagesUserBuy(user_id)
-  .then(messages => {
-    for (message of messages) {
-      $('#buy-messages').append(`
-        <a class="user-messages" id=${message.id}>
-          <div class="message-padding">
-            <div class="message-box">
-              <span class='image-padding'>
-                <img alt="user picture" src=${message.profile_photo}>
-              </span>
-              <div class="message-details">
-                <h5>${message.user_name}</h5>
-                <p>${message.content}</p>
-              </div>
-            </div>
-          </div>
-        </a>
-        `)
-      }
+    url: `/api/messages/?user_id=${user_id}`
     })
+}
+
+getMessageSell = (message_id) => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/messages/sell/?message_id=${message_id}`,
+  })
+}
+
+getMessageBuy = (message_id) => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/messages/buy/?message_id=${message_id}`,
+  })
 }
 
 const getMessageData = (message_id) => {
   return $.ajax({
     method: "GET",
-    url: `/api/messages/?message_id=${message_id}`,
+    url: `/api/messages/message/${message_id}`,
   })
+  .then(res => {
+    if (res[0].seller_id === 1) {
+      return getMessageSell(message_id)
+    } else if (res[0].buyer_id === 1) {
+      return getMessageBuy(message_id)
+    }
+  })
+}
+
+//need to get id using cookie
+const renderMessageAll = (user_id) => {
+  getAllMessages(user_id)
+    .then(messages => {
+      for (message of messages) {
+        if (message.seller_id === 1) {
+          getMessageSell(message.id)
+            .then(res => {
+              $('#sell-messages').append(`
+              <a class="user-messages" id=${res[0].id}>
+                <div class="message-padding">
+                  <div class="message-box">
+                    <span class='image-padding'>
+                      <img alt="user picture" src=${res[0].profile_photo}>
+                    </span>
+                    <div class="message-details">
+                      <h5>${res[0].user_name}</h5>
+                      <p>${res[0].content}</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              `)})
+        } else if (message.buyer_id === 1) {
+          getMessageBuy(message.id)
+            .then(res => {
+              $('#buy-messages').append(`
+                <a class="user-messages" id=${res[0].id}>
+                  <div class="message-padding">
+                    <div class="message-box">
+                      <span class='image-padding'>
+                        <img alt="user picture" src=${res[0].profile_photo}>
+                      </span>
+                      <div class="message-details">
+                        <h5>${res[0].user_name}</h5>
+                        <p>${res[0].content}</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+          `)
+            })
+        }
+      }
+    })
 }
 
 const renderMessageUser = (message_id) => {
@@ -101,8 +117,6 @@ const renderMessageUser = (message_id) => {
     `)
   })
 };
-
-const user_logged_in = () => {};
 
 const renderMessagesPage = () => {
   return $('.main-content').append(
