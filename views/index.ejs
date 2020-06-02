@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../styles/messages.css" />
     <link rel="stylesheet" href="../styles/layout.css" />
     <link rel="stylesheet" href="../styles/home_page.css" />
+    <link rel="stylesheet" href="../styles/dropdown.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
@@ -16,24 +17,38 @@
   <body>
     <div class="container">
       <nav>
-        <a href="/"><img src="images/bblogo.png" alt="logo" class="logo" /></a>
-        <div class="dropdown"></div>
-        <ul class="product-search">
+        <a href="/"><img src="https://www.logoground.com/uploads/201679392016-09-022776399connected-letter-B-B-Logo.jpg" alt="logo" class="logo" /></a>
+        <div class="dropdown">
+            <button class="dropbtn">Products</button>
+            <div class="dropdown-content">
+              <a href="#">Laptops</a>
+              <a href="#">Monitors</a>
+              <a href="#">Phones</a>
+              <a href="#">Cameras</a>
+              <a href="#">Tablets</a>
+              <a href="#">Accessories</a>
+
+            </div>
+          </div>
+
+          <input type="text" class="search-input" placeholder="Search.." />
+        </div>
+        <!-- <ul class="product-search">
           <li><a href="#">Products</a></li>
           <li class="search">
             <input type="text" class="search-input" placeholder="Search.." />
           </li>
-        </ul>
+        </ul> -->
 
-        <ul class="user-bar">
-          <li><i class="far fa-heart"></i></li>
-          <li><i class="message-button far fa-comment-alt"></i></li>
-          <form action="post">
+        <form action="post">
+          <ul class="user-bar">
+            <li><i class="far fa-heart"></i></li>
+            <li><i class="message-button far fa-comment-alt"></i></li>
             <li>Email<input type="text" name="email" /></li>
             <li>Password<input type="password" name="password" /></li>
             <li><input type="submit" name="login" value="Log In" /></li>
-          </form>
-        </ul>
+          </ul>
+        </form>
       </nav>
     </div>
     <div class="main-content">
@@ -43,13 +58,28 @@
             Recommendations <button class="banner-btn">shop now</button>
             <ul class="product-image">
               <li>
-                <input type="image" src="/rec1.jpg" border="0" alt="Submit" />
+                <a href=""
+                  ><img
+                    type="image"
+                    src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-wifi-spacegray-201911_FMT_WHH?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1573825365923"
+                    alt="Submit"
+                /></a>
               </li>
               <li>
-                <input type="image" src="/rec2.jpg" border="0" alt="Submit" />
+                <a href=""
+                  ><img
+                    type="image"
+                    src="https://lh3.googleusercontent.com/wY4JwN7SJ4bQ4NOf4eZcn3U-pzHAkkeILIJxWBtFZuGYjkQgDjmnCjvGL3WgKXrX-90"
+                    alt="Submit"
+                /></a>
               </li>
               <li>
-                <input type="image" src="/rec3.jpg" border="0" alt="Submit" />
+                <a href=""
+                  ><img
+                    type="image"
+                    src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MV7N2?wid=1144&hei=1144&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1551489688005"
+                    alt="Submit"
+                /></a>
               </li>
             </ul>
           </h1>
@@ -57,13 +87,28 @@
             Price Drops <button class="banner-btn">shop now</button>
             <ul class="price-drop">
               <li>
-                <input type="image" src="/pd1.jpg" border="0" alt="Submit" />
+                <a href="https://www.bang-olufsen.com"
+                  ><img
+                    type="image"
+                    src="https://m.media-amazon.com/images/G/01/Shopbop/p/prod/products/bopla/bopla300861071c/bopla300861071c_m1_2-0._UX357_QL90_.jpg"
+                    alt="Submit"
+                /></a>
               </li>
               <li>
-                <input type="image" src="/pd2.jpg" border="0" alt="Submit" />
+                <a href=""
+                  ><img
+                    type="image"
+                    src="https://toppng.com/uploads/preview/samsung-laptop-png-11552846765f7eqltyy5q.png"
+                    alt="Submit"
+                /></a>
               </li>
               <li>
-                <input type="image" src="/pd3.jpg" border="0" alt="Submit" />
+                <a href=""
+                  ><img
+                    type="image"
+                    src="https://assets.logitech.com/assets/65520/4/mx-vertical-pdp.png"
+                    alt="Submit"
+                /></a>
               </li>
             </ul>
           </h2>
@@ -71,13 +116,28 @@
             New Product drops <button class="banner-btn">shop now</button>
             <ul class="new-products-drops">
               <li>
-                <input type="image" src="/new1.jpg" border="0" alt="Submit" />
+                <a href=""
+                  ><img
+                    type="image"
+                    src="https://www.usa.canon.com/internet/wcm/connect/us/9a34ca27-554c-4e82-aa01-c4bcf7b61d14/eos-5ds-r-dslr-camera-3q-lens-d.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_P1KGHJ01L85180AUEPQQJ53034-9a34ca27-554c-4e82-aa01-c4bcf7b61d14-kZyO2a-"
+                    alt="Submit"
+                /></a>
               </li>
               <li>
-                <input type="image" src="/new2.jpg" border="0" alt="Submit" />
+                <a href=""
+                  ><img
+                    type="image"
+                    src="https://www.ilounge.com/wp-content/uploads/2020/05/Apple-iMac.png"
+                    alt="Submit"
+                /></a>
               </li>
               <li>
-                <input type="image" src="/new3.jpg" border="0" alt="Submit" />
+                <a href=""
+                  ><img
+                    type="image"
+                    src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-wifi-spacegray-201911_FMT_WHH?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1573825365923"
+                    alt="Submit"
+                /></a>
               </li>
             </ul>
           </h3>
