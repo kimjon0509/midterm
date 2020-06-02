@@ -1,4 +1,4 @@
-body {
+.favourites-body {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,8 +15,10 @@ body {
   width: 95%;
   word-break: break-all;
   font-size: large;
+  align-items: inherit;
 }
-img {
+  /* being overwritten by img in messages.scss file */
+.img-favourites {
   width: 20%;
 }
 .information {
@@ -27,7 +29,7 @@ img {
   width: 20%;
 }
 
-ul {
+.ul-favourites {
   width: 20%;
   display: flex;
   flex-direction: column;
