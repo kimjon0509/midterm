@@ -2,15 +2,10 @@ body {
   margin: 0;
   background-color: #eee;
   font-family: "Work Sans", sans-serif;
-  // <<<<<<< Updated upstream
   font-weight: 300;
 }
 
 .container {
-  /* display: flex; */
-  /* width: 100%; */
-  /* justify-content: space-around; */
-  // =======
   font-weight: 400;
   width: 90%;
   margin: 0;
@@ -22,38 +17,53 @@ body {
 }
 
 nav {
-  width: 112%;
+  // width: 112%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background: #55d6aa;
-  height: 50px;
+  height: 60px;
   align-items: center;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 }
+
+// nav * {
+//   border: 1px solid red;
+// }
 
 .user-bar {
   display: flex;
-  // =======
+  align-items: center;
+  // justify-content: right;
+
+  li:nth-child(2) ~ li {
+    padding: 0.5em;
+  }
 }
 
-header ::after {
-  content: " ";
-  display: table;
-  clear: both;
+.search-input {
+  flex-grow: 0.5;
+}
+// header ::after {
+//   content: " ";
+//   display: table;
+//   clear: both;
+// }
+
+.logo-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .dropdown {
+    margin-left: 1em;
+  }
 }
 
 .logo {
-  float: left;
-  padding: 10px 0;
+  // float: left;
+  // padding: 10px 0;
+  margin-left: 0.5em;
 }
-
-// nav {
-//   float: right;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-// >>>>>>> Stashed changes
 
 nav ul {
   margin: 0;
@@ -62,22 +72,15 @@ nav ul {
 }
 
 nav li {
-  // <<<<<<< Updated upstream
-  /* display: inline-block; */
-  margin-left: 40px;
-  padding-top: 25px;
-  /* position: relative; */
+  // margin-left: 40px;
+  // padding-top: 25px;
 }
 
 .search {
-  /* flex: 1; */
-  padding-top: 25px;
-  /* width: auto; */
-  // =======
-  display: inline-block;
-  margin-left: 80px;
-  padding-top: 23px;
-  // >>>>>>> Stashed changes
+  // padding-top: 25px;
+  // display: inline-block;
+  // margin-left: 80px;
+  // padding-top: 23px;
 }
 
 nav a {
@@ -110,9 +113,6 @@ nav a:hover {
   .search {
     order: 1;
   }
-  // =======
-  // color: #000;
-  // >>>>>>> Stashed changes
 }
 
 .banner-title1 {
