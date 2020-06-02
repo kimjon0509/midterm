@@ -1,18 +1,18 @@
 .product-page {
-	display: flex;
-	flex-direction: column;
-	width: 70vw;
-	height: 90vh;
-	margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  height: 90vh;
+  margin: 0 auto;
 }
 
 /*top */
 
 .product-title {
-	width: 50%;
-	padding: 15px;
-	border-radius: 25px;
-	box-sizing: border-box;
+  width: 50%;
+  padding: 15px;
+  border-radius: 25px;
+  box-sizing: border-box;
 }
 
 .product-title > h1 {
@@ -30,22 +30,22 @@
 /*centre left */
 
 .centre-content {
-	display: flex;
-	flex-direction: row;
-	width: 100%;
-	margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .product-images {
-	display: flex;
-	width: 80%;
-	border: 1px solid grey;
+  display: flex;
+  width: 80%;
+  border: 1px solid grey;
 }
 
 .main-photo {
-  margin-right:10px;
+  margin-right: 10px;
   width: 80%;
-/*  border: 1px solid grey;*/
+  /*  border: 1px solid grey;*/
 }
 
 .main-photo > img {
@@ -55,10 +55,10 @@
 }
 
 .sub-photos {
-	display: flex;
-	flex-direction: column;
-	width: 20%;
-/*	border: 1px solid grey;*/
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  /*	border: 1px solid grey;*/
 }
 
 .sub-photos > img {
@@ -67,16 +67,15 @@
   border-radius: 0;
 }
 
-
 /*centre right*/
 .right-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: flex-start;
-	width: 20%;
-	margin-left: 20px;
-	box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 20%;
+  margin-left: 20px;
+  box-sizing: border-box;
 }
 
 .user-info {
@@ -113,10 +112,10 @@
 }
 
 .form-block {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .text-input {
@@ -133,10 +132,10 @@
 .message-template > button {
   padding: 10px 0;
   margin: 5px 0;
-  background: #55d6aa;;
+  background: #55d6aa;
   border: none;
   color: white;
-  border-radius: 25px
+  border-radius: 25px;
 }
 
 .text-input > textarea {
