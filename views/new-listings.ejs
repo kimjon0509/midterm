@@ -9,6 +9,7 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/character-count.js"></script>
   </head>
 
   <body>
@@ -55,10 +56,13 @@
         </input>
     </section>
   <label class="last-label">
-    <input class="description-input" type="text" name="text" placeholder="Description">
+    <textarea class="description-input" type="text" name="text" placeholder="Description"></textarea>
 </label>
 </input>
+<section class="under-text">
+<output name="counter" class="counter" for="description-input">400</output>
     <button type="Submit" class="new-button">Submit Listing</button>
+    </section>
       </form>
   </body>
 </html>

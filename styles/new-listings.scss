@@ -22,16 +22,16 @@
   margin-top: 0.5em;
   justify-content: center;
 }
-
+.under-text {
+  display: flex;
+  justify-content: center;
+}
 .description-input {
   display: flex;
   justify-content: center;
   width: 315px;
   height: 35px;
 }
-
-.new-button {
-  margin-top: 0.5em;
-  margin-left: 40%;
-  margin-right: 40%;
+.counter {
+  padding-right: 175px;
 }
