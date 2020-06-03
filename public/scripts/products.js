@@ -84,9 +84,10 @@ const sendMessageToDatabase = (message) => {
 
 $(() => {
   $('.product-click-temp').click(() => {
+    console.log('clicked')
     $('.main-content').empty();
     // get product id from main page img
-    renderProductsPage(2);
+    renderProductsPage(36);
   })
   $(document).on("click", "button" , function() {
     const val = $(this).text();
