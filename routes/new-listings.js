@@ -3,10 +3,10 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/",(req, res) => {
-    res.render("new-listings");
+    console.log("success")
 })
-  router.post("favourites", (req, res) => {
-    console.log("favourited")
+  router.post("/", (req, res) => {
+    console.log("posted");
   })
 return router;
 }

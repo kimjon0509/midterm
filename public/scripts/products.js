@@ -45,7 +45,7 @@ const renderProductsPage = (product_id) => {
                 <button> I would Like to purchase this item </button>
               </div>
               <div class="form-block">
-                <form>
+                <form class>
                   <div class="form-layout">
                     <div class="text-input">
                       <textarea name="text"></textarea>
