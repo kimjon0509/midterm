@@ -8,7 +8,7 @@ const getProductSellerInfo = (product_id) => {
 const renderProductsPage = (product_id) => {
   getProductSellerInfo(product_id)
     .then(res => {
-      console.log(res[0], 'test');
+      //console.log(res[0], 'test');
       let data = res[0];
       $('.main-content').append(`
       <div class="product-page">
@@ -107,3 +107,5 @@ $(() => {
       })
     })
 })
+
+
