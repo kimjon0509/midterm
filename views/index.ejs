@@ -6,6 +6,7 @@
     <script type="text/javascript" src="/scripts/messages.js"></script>
     <script type="text/javascript" src="/scripts/favourites.js"></script>
     <script type="text/javascript" src="/scripts/products.js"></script>
+    <script type="text/javascript" src="/scripts/register-page.js"></script>
     <link rel="stylesheet" href="../styles/messages.css" />
     <link rel="stylesheet" href="../styles/layout.css" />
     <link rel="stylesheet" href="../styles/home_page.css" />
@@ -23,7 +24,7 @@
       <nav>
         <div class='logo-menu'>
 
-        <a href="/"><img src="https://toppng.com/public/uploads/preview/company-name-logo-11551052030ob9tu5iwdn.png" alt="logo" class="logo" /></a>
+        <a href="/"><img id="logoimage" src="https://toppng.com/public/uploads/preview/company-name-logo-11551052030ob9tu5iwdn.png" alt="logo" class="logo" /></a>
           <div class="dropdown">
             <button class="dropbtn">Products</button>
             <div class="dropdown-content">
@@ -45,9 +46,9 @@
         <ul class="user-bar">
           <li><i class="favourites-button far fa-heart"></i></li>
           <li><i class="message-button far fa-comment-alt"></i></li>
-          <form action="post">
-            <li>Email<input type="text" name="email" /></li>
-            <li>Password<input type="password" name="password" /></li>
+          <form id="myID" action="post">
+            <li><input type="text" name="email" placeholder="Email"/></li>
+            <li><input type="password" name="password" placeholder="Password"/></li>
             <li><input type="submit" name="login" value="Log In" /></li>
           </ul>
         </form>
@@ -61,23 +62,23 @@
             <ul class="product-image">
               <li>
                 <a href="" class='product-click-temp'
-                  ><img
+                  ><img id="image1"
                     type="image"
                     src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-wifi-spacegray-201911_FMT_WHH?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1573825365923"
                     alt="Submit"
                 /></a>
               </li>
               <li>
-                <a href=""
-                  ><img
+                <a href="product-click-temp2"
+                  ><img id= "image2"
                     type="image"
                     src="https://lh3.googleusercontent.com/wY4JwN7SJ4bQ4NOf4eZcn3U-pzHAkkeILIJxWBtFZuGYjkQgDjmnCjvGL3WgKXrX-90"
                     alt="Submit"
                 /></a>
               </li>
               <li>
-                <a href=""
-                  ><img
+                <a href="product-click-temp3"
+                  ><img id="image3"
                     type="image"
                     src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MV7N2?wid=1144&hei=1144&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1551489688005"
                     alt="Submit"
@@ -90,7 +91,7 @@
             <ul class="price-drop">
               <li>
                 <a href="https://www.bang-olufsen.com"
-                  ><img
+                  ><img id="image4"
                     type="image"
                     src="https://m.media-amazon.com/images/G/01/Shopbop/p/prod/products/bopla/bopla300861071c/bopla300861071c_m1_2-0._UX357_QL90_.jpg"
                     alt="Submit"
@@ -98,7 +99,7 @@
               </li>
               <li>
                 <a href=""
-                  ><img
+                  ><img id="image5"
                     type="image"
                     src="https://toppng.com/uploads/preview/samsung-laptop-png-11552846765f7eqltyy5q.png"
                     alt="Submit"
@@ -106,7 +107,7 @@
               </li>
               <li>
                 <a href=""
-                  ><img
+                  ><img id="image6"
                     type="image"
                     src="https://assets.logitech.com/assets/65520/4/mx-vertical-pdp.png"
                     alt="Submit"
@@ -119,7 +120,7 @@
             <ul class="new-products-drops">
               <li>
                 <a href=""
-                  ><img
+                  ><img id="image7"
                     type="image"
                     src="https://www.usa.canon.com/internet/wcm/connect/us/9a34ca27-554c-4e82-aa01-c4bcf7b61d14/eos-5ds-r-dslr-camera-3q-lens-d.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_P1KGHJ01L85180AUEPQQJ53034-9a34ca27-554c-4e82-aa01-c4bcf7b61d14-kZyO2a-"
                     alt="Submit"
@@ -127,7 +128,7 @@
               </li>
               <li>
                 <a href=""
-                  ><img
+                  ><img id="image8"
                     type="image"
                     src="https://www.ilounge.com/wp-content/uploads/2020/05/Apple-iMac.png"
                     alt="Submit"
@@ -135,7 +136,7 @@
               </li>
               <li>
                 <a href=""
-                  ><img
+                  ><img id= "image9"
                     type="image"
                     src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-wifi-spacegray-201911_FMT_WHH?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1573825365923"
                     alt="Submit"
