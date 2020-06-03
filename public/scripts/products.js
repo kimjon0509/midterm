@@ -8,7 +8,7 @@ const getProductSellerInfo = (product_id) => {
 const renderProductsPage = (product_id) => {
   getProductSellerInfo(product_id)
     .then(res => {
-      console.log(res[0], 'test');
+      //console.log(res[0], 'test');
       let data = res[0];
       $('.main-content').append(`
       <div class="product-page">
@@ -89,21 +89,23 @@ $(() => {
     // get product id from main page img
     renderProductsPage(3);
   })
-  $(document).on("click", "button" , function() {
-    const val = $(this).text();
-    $('textarea').val(val)
-  });
+  // $(document).on("click", "button" , function() {
+  //   const val = $(this).text();
+  //   $('textarea').val(val)
+  // });
 
-  $(document).on("submit", ".product-form", function(e){
-    e.preventDefault();
-    const $data = $('textarea').val()
-    sendMessageToDatabase($data)
-    .then(() => {
-      console.log('sent data reset form')
-      $('.message-user').empty();
-      $('.message-user').append(`
-      <p> Message Sent! </p>
-      `)
-      })
-    })
+  // $(document).on("submit", "form", function(e){
+  //   e.preventDefault();
+  //   const $data = $('textarea').val()
+  //   sendMessageToDatabase($data)
+  //   .then(() => {
+  //     console.log('sent data reset form')
+  //     $('.message-user').empty();
+  //     $('.message-user').append(`
+  //     <p> Message Sent! </p>
+  //     `)
+  //     })
+  //   })
 })
+
+

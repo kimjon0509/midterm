@@ -46,6 +46,7 @@ const newListingsRoutes = require("./routes/new-listings");
 const registerPageRoutes = require("./routes/register-page");
 const messagesRoutes = require("./routes/messages");
 const productsRoutes =  require("./routes/products");
+const searchRoutes = require("./routes/search");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -59,12 +60,50 @@ app.use("/api/register", registerPageRoutes(db));
 
 app.use("/api/messages", messagesRoutes(db, io));
 app.use("/api/products", productsRoutes(db));
+app.use("/api/search", searchRoutes(db));
+
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("index");
+  db.query(`
+  SELECT *
+  FROM products;
+  `)
+  .then( response=> {
+    res.render("index", {products: response.rows});
+    })
 });
+
+app.get("/login", (req, res) => {
+  db.query(`
+  SELECT email, password FROM users
+ `)
+  .then( (response) => {
+    res.render(users, response.rows)
+  })
+})
+
+app.post("/login", (req, res) => {
+  const {email, password} = req.body;
+  const user = getUserByEmail(email, users);
+    if (!user || !password) {
+      let templateVars = {
+        status: 401,
+        message: "Incorrect credentials"
+      }
+      res.status(401)
+    }
+   else {
+     req.session.user_id = user.id;
+     res.redirect("/");
+   }
+})
+
+const getUserByEmail = (email, password) => {
+
+}
+
 
 server.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
