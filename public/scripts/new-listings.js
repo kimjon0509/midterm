@@ -4,7 +4,7 @@ const renderNewListings = () => {
     <form method="POST" class="listing-inputs">
       <section class="row1">
       <label class="labels">
-        <input type="text" name="text" placeholder="Product Name">
+        <input type="text" placeholder="Product Name" name="name" required>
       </label>
         </input>
       <label class="labels">
@@ -14,7 +14,7 @@ const renderNewListings = () => {
     </section>
     <section class="row1">
       <label class="labels">
-        <input type="text" name="text" placeholder="Price">
+        <input type="text" name="price" placeholder="Price" required>
       </label>
         </input>
       <label class="labels">
@@ -75,6 +75,7 @@ const renderNewListings = () => {
     <input class="description-input" type="text" name="text" placeholder="Description">
 </label>
 </input>
+<button type="submit" class="newListing-button">Submit</button>
       </form>`)
 }
 
