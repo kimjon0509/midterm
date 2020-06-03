@@ -75,6 +75,35 @@ app.get("/", (req, res) => {
     })
 });
 
+app.get("/login", (req, res) => {
+  db.query(`
+  SELECT email, password FROM users
+ `)
+  .then( (response) => {
+    res.render(users, response.rows)
+  })
+})
+
+app.post("/login", (req, res) => {
+  const {email, password} = req.body;
+  const user = getUserByEmail(email, users);
+    if (!user || !password) {
+      let templateVars = {
+        status: 401,
+        message: "Incorrect credentials"
+      }
+      res.status(401)
+    }
+   else {
+     req.session.user_id = user.id;
+     res.redirect("/");
+   }
+})
+
+const getUserByEmail = (email, password) => {
+
+}
+
 
 server.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
