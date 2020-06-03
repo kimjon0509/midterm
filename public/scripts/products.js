@@ -89,21 +89,21 @@ $(() => {
     // get product id from main page img
     renderProductsPage(3);
   })
-  $(document).on("click", "button" , function() {
-    const val = $(this).text();
-    $('textarea').val(val)
-  });
+  // $(document).on("click", "button" , function() {
+  //   const val = $(this).text();
+  //   $('textarea').val(val)
+  // });
 
-  $(document).on("submit", "form", function(e){
-    e.preventDefault();
-    const $data = $('textarea').val()
-    sendMessageToDatabase($data)
-    .then(() => {
-      console.log('sent data reset form')
-      $('.message-user').empty();
-      $('.message-user').append(`
-      <p> Message Sent! </p>
-      `)
-      })
-    })
+  // $(document).on("submit", "form", function(e){
+  //   e.preventDefault();
+  //   const $data = $('textarea').val()
+  //   sendMessageToDatabase($data)
+  //   .then(() => {
+  //     console.log('sent data reset form')
+  //     $('.message-user').empty();
+  //     $('.message-user').append(`
+  //     <p> Message Sent! </p>
+  //     `)
+  //     })
+  //   })
 })
