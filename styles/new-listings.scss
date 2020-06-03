@@ -16,22 +16,19 @@
 .labels {
   margin-right: 0.5em;
 }
-
+.second-last {
+  margin-top: 0.5em;
+  margin: 0 auto;
+}
 .last-label {
   display: flex;
   margin-top: 0.5em;
   justify-content: center;
 }
-.under-text {
-  display: flex;
-  justify-content: center;
-}
+
 .description-input {
   display: flex;
   justify-content: center;
   width: 315px;
   height: 35px;
-}
-.counter {
-  padding-right: 175px;
 }
