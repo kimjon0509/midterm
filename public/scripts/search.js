@@ -49,7 +49,7 @@ const listingPage = () => {
 const productListing = (data) => {
   console.log('checking productlisting')
   $('.total-boxes').append(`
-  <div class="boxes_home_page" id="${data.id}">
+  <div class="boxes_home_page" data-product-id="${data.id}">
     <span class="title" id="Name"> ${data.name} </span>
     <img class="img_home_page" src=${data.main_photo}>
     <p class="title" id="description">${data.description}</p>
@@ -94,8 +94,16 @@ $(() => {
             productListing(datas[i])
           }
         })
-    };
-  })
+        .then(() => {
+          $('.boxes_home_page').click(function(e) {
+          e.preventDefault();
+          const productId = $(this).attr('data-product-id');
+          $('.main-content').empty();
+          window.renderProductsPage(productId);
+          })
+        })
+      }
+    })
 });
 
 

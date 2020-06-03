@@ -20,5 +20,13 @@ $(() => {
           window.productListing(datas[i])
         }
       })
+      .then(() => {
+        $('.boxes_home_page').click(function(e) {
+        e.preventDefault();
+        const productId = $(this).attr('data-product-id');
+        $('.main-content').empty();
+        window.renderProductsPage(productId);
+        })
+      })
   })
 });

@@ -6,7 +6,7 @@ const getProductSellerInfo = (product_id) => {
 }
 
 const renderProductsPage = (product_id) => {
-  getProductSellerInfo(product_id)
+  return getProductSellerInfo(product_id)
     .then(res => {
       //console.log(res[0], 'test');
       let data = res[0];
@@ -40,12 +40,12 @@ const renderProductsPage = (product_id) => {
             <div class="message-user">
               <h3> Message User </h3>
               <div class="message-template">
-                <button> Hi, is this still available? </button>
-                <button> Is the price negotiable? </button>
-                <button> I would Like to purchase this item </button>
+                <button class="msg-temp"> Hi, is this still available? </button>
+                <button class="msg-temp"> Is the price negotiable? </button>
+                <button class="msg-temp"> I would Like to purchase this item </button>
               </div>
               <div class="form-block">
-                <form>
+                <form class="message-to-user">
                   <div class="form-layout">
                     <div class="text-input">
                       <textarea name="text"></textarea>
@@ -83,29 +83,35 @@ const sendMessageToDatabase = (message) => {
 }
 
 $(() => {
-  $('.product-click-temp').click(() => {
+  $('.product-click-temp').click(function(e) {
+    e.preventDefault();
     console.log('clicked')
+    const productId = $(this).attr('data-product-id')
     $('.main-content').empty();
+    console.log(productId, 'product_id')
     // get product id from main page img
-    renderProductsPage(3);
-  })
-  // $(document).on("click", "button" , function() {
-  //   const val = $(this).text();
-  //   $('textarea').val(val)
-  // });
+    renderProductsPage(productId)
+      .then(() => {
+        $('.msg-temp').click(function(e) {
+          e.preventDefault();
+          const val = $(this).text();
+          $('textarea').val(val)
+        $('.message-to-user').submit(function(e){
+          e.preventDefault();
+          const $data = $('textarea').val()
+          sendMessageToDatabase($data)
+          .then(() => {
+            console.log('sent data reset form')
+            $('.message-user').empty();
+            $('.message-user').append(`
+            <p> Message Sent! </p>
+            `)
+            })
+          })
+        });
+      })
+    })
 
-  // $(document).on("submit", "form", function(e){
-  //   e.preventDefault();
-  //   const $data = $('textarea').val()
-  //   sendMessageToDatabase($data)
-  //   .then(() => {
-  //     console.log('sent data reset form')
-  //     $('.message-user').empty();
-  //     $('.message-user').append(`
-  //     <p> Message Sent! </p>
-  //     `)
-  //     })
-  //   })
 })
 
-
+window.renderProductsPage = renderProductsPage;
