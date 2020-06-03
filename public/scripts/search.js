@@ -4,7 +4,7 @@ const listingPage = () => {
   $('.main-content').append(`
     <div class="listings-body">
         <h3 class="listings-title"> Filters </h3>
-        <form method="POST">
+        <form class="search-form" method="POST">
           <section class="filters">
             <input type="integer" placeholder="Minimum Price"></input>
             <input type="integer" placeholder="Maximum Price"></input>

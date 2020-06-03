@@ -1,7 +1,7 @@
 const renderNewListings = () => {
   return $('.main-content').append(`
   <h1 class="new-title">New Listing</h1>
-    <form method="POST" class="listing-inputs">
+    <form class="listing-inputs">
       <section class="row1">
       <label class="labels">
         <input type="text" name="text" placeholder="Product Name">
