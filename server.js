@@ -66,8 +66,15 @@ app.use("/api/search", searchRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("index");
+  db.query(`
+  SELECT *
+  FROM products;
+  `)
+  .then( response=> {
+    res.render("index", {products: response.rows});
+    })
 });
+
 
 server.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
