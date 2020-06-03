@@ -25,7 +25,12 @@ nav {
   align-items: center;
   // margin-bottom: 20px;
 }
-
+#create {
+  font: "Work Sans", sans-serif;
+  color: white;
+  background-color: #55d6aa;
+  border: none;
+}
 // nav * {
 //   border: 1px solid red;
 // }
@@ -33,7 +38,29 @@ nav {
 .user-bar {
   display: flex;
   align-items: center;
+
   // justify-content: right;
+  #heart {
+    padding: 15px;
+  }
+
+  #chat {
+    padding: 15px;
+  }
+
+  #em {
+    padding: 0.5px;
+    margin: 0.5em;
+    margin-top: 0.75em;
+  }
+  #pword {
+    padding: 0.5px;
+    margin: 0.5em;
+    margin-top: 0.75em;
+  }
+  #login {
+    padding-top: 0.5px;
+  }
 
   li:nth-child(2) ~ li {
     padding: 0.5em;
