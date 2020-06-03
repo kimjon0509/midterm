@@ -1,3 +1,6 @@
+
+// CAN DELETE THIS
+
 $(document).ready(function() {
   $(".description-input").on("keyup", function () {
     console.log("working");
