@@ -45,7 +45,7 @@ const renderProductsPage = (product_id) => {
                 <button> I would Like to purchase this item </button>
               </div>
               <div class="form-block">
-                <form class>
+                <form class="product-form">
                   <div class="form-layout">
                     <div class="text-input">
                       <textarea name="text"></textarea>
@@ -94,7 +94,7 @@ $(() => {
     $('textarea').val(val)
   });
 
-  $(document).on("submit", "form", function(e){
+  $(document).on("submit", ".product-form", function(e){
     e.preventDefault();
     const $data = $('textarea').val()
     sendMessageToDatabase($data)
