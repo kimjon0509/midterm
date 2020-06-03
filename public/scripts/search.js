@@ -1,4 +1,5 @@
 const listingPage = () => {
+  console.log('empty')
   $('.main-content').empty();
   $('.main-content').append(`
     <div class="listings-body">
@@ -56,7 +57,8 @@ const getSearchVal = (url) => {
 $(() => {
   $('.search-bar').keydown((e) => {
     if(e.key == 'Enter') {
-      let url = ''
+      console.log('key pressed')
+      let url = '';
       e.preventDefault();
       const search_val = $('.search-input').val().split(' ');
       for (let i in search_val) {
@@ -77,7 +79,7 @@ $(() => {
               <img class="img_home_page" src=${datas[i].main_photo}>
               <p class="title" id="description">${datas[i].description}</p>
               <ul class="features">
-                <li> price: ${datas[i].price} </li>
+                <li> price: $${datas[i].price} </li>
                 <li> condition: ${datas[i].condition} </li>
                 <li> category: ${datas[i].category} </li>
               </ul>
