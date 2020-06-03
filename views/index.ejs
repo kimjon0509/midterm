@@ -6,6 +6,7 @@
     <script type="text/javascript" src="/scripts/messages.js"></script>
     <script type="text/javascript" src="/scripts/favourites.js"></script>
     <script type="text/javascript" src="/scripts/products.js"></script>
+    <script type="text/javascript" src="/scripts/register-page.js"></script>
     <link rel="stylesheet" href="../styles/messages.css" />
     <link rel="stylesheet" href="../styles/layout.css" />
     <link rel="stylesheet" href="../styles/home_page.css" />
@@ -45,9 +46,9 @@
         <ul class="user-bar">
           <li><i class="favourites-button far fa-heart"></i></li>
           <li><i class="message-button far fa-comment-alt"></i></li>
-          <form action="post">
-            <li>Email<input type="text" name="email" /></li>
-            <li>Password<input type="password" name="password" /></li>
+          <form id="myID" action="post">
+            <li><input type="text" name="email" placeholder="Email"/></li>
+            <li><input type="password" name="password" placeholder="Password"/></li>
             <li><input type="submit" name="login" value="Log In" /></li>
           </ul>
         </form>
