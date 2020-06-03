@@ -8,7 +8,7 @@ const getProductSellerInfo = (product_id) => {
 const renderProductsPage = (product_id) => {
   getProductSellerInfo(product_id)
     .then(res => {
-      console.log(res[0]);
+      console.log(res[0], 'test');
       let data = res[0];
       $('.main-content').append(`
       <div class="product-page">
@@ -87,7 +87,7 @@ $(() => {
     console.log('clicked')
     $('.main-content').empty();
     // get product id from main page img
-    renderProductsPage(36);
+    renderProductsPage(3);
   })
   $(document).on("click", "button" , function() {
     const val = $(this).text();
