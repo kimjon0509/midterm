@@ -4,7 +4,6 @@ const router  = express.Router();
 module.exports = (db) => {
   // need to check if users are registered
   //need to save locations to the database first then save user info to the database
-
   router.post("/register-page ",(req, res) => {
     let {name, profile_photo, email, password, phone_number, location_id} = req.body
     const queryString = `
