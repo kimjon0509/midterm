@@ -5,5 +5,9 @@ module.exports = (db) => {
   router.get("/",(req, res) => {
   res.render("listings");
 })
+  router.post("/favourites", (req, res) => {
+      db.query()
+  })
 return router;
+
 }
