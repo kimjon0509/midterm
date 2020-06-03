@@ -1,5 +1,4 @@
 const listingPage = () => {
-  console.log('empty')
   $('.main-content').empty();
   $('.main-content').append(`
     <div class="listings-body">
@@ -47,6 +46,26 @@ const listingPage = () => {
   `);
 }
 
+const productListing = (data) => {
+  console.log('checking productlisting')
+  $('.total-boxes').append(`
+  <div class="boxes_home_page" id="${data.id}">
+    <span class="title" id="Name"> ${data.name} </span>
+    <img class="img_home_page" src=${data.main_photo}>
+    <p class="title" id="description">${data.description}</p>
+    <ul class="features">
+      <li> price: $${data.price} </li>
+      <li> condition: ${data.condition} </li>
+      <li> category: ${data.category} </li>
+    </ul>
+    <form class="title" method="POST">
+      <input type="message" name="message" placeholder="Type Message..."></input>
+      <button type="submit"> Submit </button>
+    </form>
+  </div>
+  `)
+}
+
 const getSearchVal = (url) => {
   return $.ajax({
     method: "GET",
@@ -72,26 +91,13 @@ $(() => {
       getSearchVal(url)
         .then(datas => {
           for (let i in datas) {
-            console.log(datas[i])
-            $('.total-boxes').append(`
-            <div class="boxes_home_page">
-              <span class="title" id="Name"> ${datas[i].name} </span>
-              <img class="img_home_page" src=${datas[i].main_photo}>
-              <p class="title" id="description">${datas[i].description}</p>
-              <ul class="features">
-                <li> price: $${datas[i].price} </li>
-                <li> condition: ${datas[i].condition} </li>
-                <li> category: ${datas[i].category} </li>
-              </ul>
-              <form class="title" method="POST">
-                <input type="message" name="message" placeholder="Type Message..."></input>
-                <button type="submit"> Submit </button>
-              </form>
-            </div>
-            `)
+            productListing(datas[i])
           }
         })
     };
   })
 });
 
+
+window.listingPage = listingPage;
+window.productListing =  productListing;
