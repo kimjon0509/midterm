@@ -46,6 +46,7 @@ const newListingsRoutes = require("./routes/new-listings");
 const registerPageRoutes = require("./routes/register-page");
 const messagesRoutes = require("./routes/messages");
 const productsRoutes =  require("./routes/products");
+const searchRoutes = require("./routes/search");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -59,6 +60,8 @@ app.use("/api/register", registerPageRoutes(db));
 
 app.use("/api/messages", messagesRoutes(db, io));
 app.use("/api/products", productsRoutes(db));
+app.use("/api/search", searchRoutes(db));
+
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
