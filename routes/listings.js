@@ -6,4 +6,5 @@ module.exports = (db) => {
   res.render("listings");
   });
 return router;
+
 }
