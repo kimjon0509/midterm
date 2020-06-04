@@ -37,3 +37,13 @@
  width: 20%;
  margin-left: 1.5em;
 }
+
+.register-user-form {
+  display: flex;
+  flex-direction: row;
+  border: 3px solid black;
+}
+
+.required-icon{
+  color: red;
+}
