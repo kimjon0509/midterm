@@ -12,7 +12,6 @@ module.exports = (db) => {
     const queryParams = [name, email, password, phone_number];
     db.query(queryString, queryParams)
       .then(data => {
-        console.log(data.rows, 'returnign val')
         res.send(data.rows)
       })
   })

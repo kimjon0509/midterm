@@ -93,7 +93,7 @@ app.get("/", (req, res) => {
     FROM products;
     `)
     .then( response=> {
-      res.render("index", {products: response.rows, user: req.session.user_id, user_info: getUserInfo(req.session.user_id, db)});
+      res.render("index", {products: response.rows, user: req.session.user_id});
       })
   }
 });
@@ -104,7 +104,7 @@ app.post('/logout', (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  console.log(req.body)
+  console.log(req.body, 'login body')
   const {email, password} = req.body;
    getUserByEmail(email, db).then (user => {
 
