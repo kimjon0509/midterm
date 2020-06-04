@@ -103,28 +103,6 @@ app.post('/logout', (req, res) => {
   res.redirect('/');
 });
 
-// app.get('/urls', (req, res) => {
-//   let templateVars = {
-//     urls: urlDatabase,
-//     user: users[req.session["user_id"]],
-//   };
-//   if (req.session["user_id"]) {
-//     res.render("urls_index", templateVars);
-//   } else {
-//     res.redirect('/login')
-//   }
-// });
-
-// app.get("/login", (req, res) => {
-//   db.query(`
-//   SELECT email, password FROM users
-//  `)
-//   .then( (response) => {
-//     console.log(response)
-//     res.json(response.rows)
-//   })
-// })
-
 app.post("/login", (req, res) => {
   console.log(req.body)
   const {email, password} = req.body;
