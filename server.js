@@ -131,11 +131,7 @@ app.post("/login", (req, res) => {
    getUserByEmail(email, db).then (user => {
 
      if (!user || !password || user.password !== password) {
-       let templateVars = {
-         status: 401,
-         message: "Incorrect credentials"
-       }
-       res.status(401).end();
+       res.status(401).send("Incorrect credentials");
      }
     else {
       req.session.user_id = user.id;
