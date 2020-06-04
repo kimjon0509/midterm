@@ -11,6 +11,7 @@ const app        = express();
 const morgan     = require('morgan');
 const socketio = require('socket.io')
 const http = require('http')
+const cookieSession = require ('cookie-session')
 
 const server = http.createServer(app)
 const io = socketio(server)
@@ -28,6 +29,7 @@ app.use(morgan('dev'));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieSession({name: 'session',keys: ['smashthekeyboard']}));
 app.use("/styles", sass({
   src: __dirname + "/styles",
   dest: __dirname + "/public/styles",
@@ -76,41 +78,42 @@ app.get("/", (req, res) => {
     })
 });
 
-app.get("/login", (req, res) => {
-  db.query(`
-  SELECT email, password FROM users
- `)
-  .then( (response) => {
-    console.log(response)
-    res.json(response.rows)
-  })
-})
+// app.get("/login", (req, res) => {
+//   db.query(`
+//   SELECT email, password FROM users
+//  `)
+//   .then( (response) => {
+//     console.log(response)
+//     res.json(response.rows)
+//   })
+// })
 
 app.post("/login", (req, res) => {
   console.log(req.body)
   const {email, password} = req.body;
-  const user = getUserByEmail(email, db);
-    if (!user || !password) {
-      let templateVars = {
-        status: 401,
-        message: "Incorrect credentials"
-      }
-      res.status(401)
+   getUserByEmail(email, db).then (user => {
+
+     if (!user || !password || user.password !== password) {
+       let templateVars = {
+         status: 401,
+         message: "Incorrect credentials"
+       }
+       res.status(401).end();
+     }
+    else {
+      req.session.user_id = user.id;
+      res.redirect("/");
     }
-   else {
-     req.session.user_id = user.id;
-     res.redirect("/");
-   }
+   })
 })
 
 const getUserByEmail = (email, db) => {
-  console.log("hello");
-  db.query(`
-  SELECT users.email FROM users
-  WHERE users.email = email`)
+  return db.query(`
+  SELECT users.* FROM users
+  WHERE users.email = $1`,[email])
   .then ( (response) => {
     console.log(response.rows);
-    return response.rows
+    return response.rows[0]
   })
 }
 
