@@ -82,13 +82,15 @@ app.get("/login", (req, res) => {
   SELECT email, password FROM users
  `)
   .then( (response) => {
-    res.render(users, response.rows)
+    console.log(response)
+    res.json(response.rows)
   })
 })
 
 app.post("/login", (req, res) => {
+  console.log(req.body)
   const {email, password} = req.body;
-  const user = getUserByEmail(email, users);
+  const user = getUserByEmail(email, db);
     if (!user || !password) {
       let templateVars = {
         status: 401,
@@ -102,8 +104,15 @@ app.post("/login", (req, res) => {
    }
 })
 
-const getUserByEmail = (email, password) => {
-
+const getUserByEmail = (email, db) => {
+  console.log("hello");
+  db.query(`
+  SELECT users.email FROM users
+  WHERE users.email = email`)
+  .then ( (response) => {
+    console.log(response.rows);
+    return response.rows
+  })
 }
 
 
