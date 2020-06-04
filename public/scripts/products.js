@@ -72,17 +72,21 @@ const renderProductsPage = (product_id) => {
     });
 }
 
-const sendMessageToDatabase = (message) => {
+const sendMessageToDatabase = (message, product_id) => {
   console.log(message, "this is the message")
-  return $.ajax({
-    method: "POST",
-    url: "/api/messages/",
-    data: {text: message,
-           seller_id: 2,
-           buyer_id: 1,
-           timestamp: Date.now(),
-           product_id: 2
-          },
+  return getProductSellerInfo(product_id)
+    .then((res) => {
+      let data = res[0];
+      $.ajax({
+      method: "POST",
+      url: "/api/messages/",
+      data: {text: message,
+            seller_id: data.seller_id,
+            buyer_id: 1,
+            timestamp: Date.now(),
+            product_id: data.product_id
+            },
+    })
   })
 }
 
@@ -144,7 +148,7 @@ $(() => {
         $('.message-to-user').submit(function(e){
           e.preventDefault();
           const $data = $('textarea').val()
-          sendMessageToDatabase($data)
+          sendMessageToDatabase($data, productId)
           .then(() => {
             console.log('sent data reset form')
             $('.message-user').empty();
