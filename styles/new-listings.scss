@@ -1,6 +1,8 @@
 .new-title {
   display: flex;
   justify-content: center;
+  font-family: Larsseit, Arial, sans-serif;
+  color: #3e4153;
 }
 .listing-inputs {
   display: flex;
@@ -14,11 +16,13 @@
   justify-content: center;
 }
 .labels {
-  margin-right: 0.5em;
+  // margin-right: 0.5em;
 }
 .second-last {
   margin-top: 0.5em;
   margin: 0 auto;
+  font-family: Larsseit, Arial, sans-serif;
+  color: #3e4153;
 }
 .last-label {
   display: flex;
@@ -27,11 +31,42 @@
 }
 
 .description-input {
+  font-family: "Work Sans", sans-serif;
   display: flex;
   justify-content: center;
   width: 315px;
-  height: 35px;
+  height: 30px;
 }
 .newListing-button {
+  padding: 0.35em 1.2em;
+  padding-top: 0.1em;
+  border: 0.1em solid #464343;
   margin: 0 auto;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
+  color: white;
+  background-color: #20b2aa;
+}
+
+.row1 {
+  margin: 8px;
+  padding: 5px;
+}
+
+.labels {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
+  border: 1.5px solid #20b2aa;
+  border-radius: 4px;
+  margin: 8px 0;
+  outline: none;
+  padding: 3px;
+}
+
+input[type="text"]:focus {
+  border-color: dodgerblue;
+  border-shadow: 0 0 4px 0 dodgerBlue;
 }
