@@ -83,6 +83,7 @@ const renderMessageAll = (user_id) => {
 const renderMessageUser = (message_id) => {
   getMessageData(message_id)
   .then (res => {
+    console.log(res)
     let details = (res[0]);
     $('.message-header').append(`
       <img alt="user picture" src=${details.profile_photo}>

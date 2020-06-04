@@ -7,9 +7,32 @@
 }
 
 /*top */
+.top-products-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 15%;
+
+  .fa-heart {
+    font-size: 30px;
+  }
+
+  .far.fa-heart:hover {
+    color: #55d6aa;
+  }
+
+  .fas.fa-heart {
+    color: #55d6aa;
+  }
+  .fas.fa-heart:hover {
+    color: black;
+  }
+
+}
 
 .product-title {
-  width: 50%;
+  width: 80%;
   padding: 15px;
   border-radius: 25px;
   box-sizing: border-box;
@@ -33,6 +56,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 70%;
   margin-bottom: 20px;
 }
 
@@ -168,7 +192,7 @@
 /*bottom*/
 .product-description {
 	width: 100%;
-	height: 200px;
+  height: 15%;
 	border: 1px solid grey;
 	padding: 20px;
   box-sizing: border-box;

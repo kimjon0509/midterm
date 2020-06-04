@@ -58,10 +58,8 @@ const productListing = (data) => {
       <li> condition: ${data.condition} </li>
       <li> category: ${data.category} </li>
     </ul>
-    <form class="title" method="POST">
-      <input type="message" name="message" placeholder="Type Message..."></input>
-      <button type="submit"> Submit </button>
-    </form>
+    <div class='favorited-item'>
+    </div>
   </div>
   `)
 }
@@ -99,7 +97,30 @@ $(() => {
           e.preventDefault();
           const productId = $(this).attr('data-product-id');
           $('.main-content').empty();
-          window.renderProductsPage(productId);
+            renderProductsPage(productId)
+            .then(() => {
+              console.log(productId)
+              renderFavouritesButton(1,productId)
+            })
+            .then(() => {
+              $('.msg-temp').click(function(e) {
+                e.preventDefault();
+                const val = $(this).text();
+                $('textarea').val(val)
+                $('.message-to-user').submit(function(e){
+                e.preventDefault();
+                const $data = $('textarea').val()
+                sendMessageToDatabase($data)
+                .then(() => {
+                  console.log('sent data reset form')
+                  $('.message-user').empty();
+                  $('.message-user').append(`
+                  <p> Message Sent! </p>
+                  `)
+                  })
+                })
+              });
+            });
           })
         })
       }
