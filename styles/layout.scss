@@ -1,8 +1,9 @@
 body {
   margin: 0;
-  background-color: #eee;
   font-family: "Work Sans", sans-serif;
   font-weight: 300;
+  background-color: #fcfcfc;
+  background-image: url("https://www.transparenttextures.com/patterns/bedge-grunge.png");
 }
 
 .container {
@@ -178,4 +179,8 @@ nav a:hover {
 .new-products-drops {
   display: flex;
   justify-content: center;
+}
+body {
+  background-color: #fcfcfc;
+background-image: url("https://www.transparenttextures.com/patterns/bedge-grunge.png");
 }
