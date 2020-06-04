@@ -59,10 +59,17 @@
         <ul class="user-bar">
           <li id="heart"><i class="favourites-button far fa-heart"></i></li>
           <li id="chat"><i class="message-button far fa-comment-alt"></i></li>
+          <% if (!user) {%>
           <form id="myID" method="post" action="/login">
             <li><input id="em" type="text" name="email" placeholder="Email"/></li>
             <li><input id="pword" type="password" name="password" placeholder="Password"/></li>
             <li><input id="login" type="submit" name="login" value="Login" /></li>
+          <%} else{ %>
+            <form class="form-inline" action="/logout" method="POST" style="min-width: 350px; flex-wrap: nowrap;">
+              <span> Logged in as: <%=user_info.name%> </span>
+              <button type="submit" class="btn btn-outline-dark">Logout</button>
+            </form>
+          <% } %>
           </ul>
         </form>
       </nav>
