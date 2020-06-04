@@ -7,9 +7,31 @@
 }
 
 /*top */
+.top-products-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .fa-heart {
+    font-size: 30px;
+  }
+
+  .far.fa-heart:hover {
+    color: #55d6aa;
+  }
+
+  .fas.fa-heart {
+    color: #55d6aa;
+  }
+  .fas.fa-heart:hover {
+    color: black;
+  }
+
+}
 
 .product-title {
-  width: 50%;
+  width: 80%;
   padding: 15px;
   border-radius: 25px;
   box-sizing: border-box;
