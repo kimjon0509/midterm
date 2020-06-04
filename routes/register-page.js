@@ -8,11 +8,12 @@ module.exports = (db) => {
     let {name, email, password, phone_number} = req.body
     const queryString = `
     INSERT INTO users (name, email, password, phone_number)
-    VALUES ($1, $2, $3, $4)`;
+    VALUES ($1, $2, $3, $4) returning *`;
     const queryParams = [name, email, password, phone_number];
     db.query(queryString, queryParams)
-      .then((data) => {
-        res.status(201).send();
+      .then(data => {
+        console.log(data.rows, 'returnign val')
+        res.send(data.rows)
       })
   })
 
