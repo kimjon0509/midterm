@@ -1,42 +1,60 @@
 const renderFavouritesPage = () => {
-  return $('.main-content').append(`
+  $('.main-content').append(`
   <section class="favourites-body">
-  <h1 class="title">Favourites</h1>
-  <div class="boxes"><img class="img-favourites" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Arduino_ftdi_chip-1.jpg/1920px-Arduino_ftdi_chip-1.jpg">
-    <p class="information"> information </p>
-    <ul class="ul-favourites">
-      <li> text 1 </li>
-      <li> text 2 </li>
-      <li> text 3 </li>
-      <li> text 4 </li>
-    </ul>
-    <form method="POST" class="text"> Message User:
-        <input type="message" name= "message" placeholder="Type Message..."> </input>
-        <button type="submit">Submit </button>
-    </form>
+    <h1 class="title">Favourites</h1>
+    <div class='boxes'>
+    </div>
+  </section>`
+  )
+}
 
-  </div>
-  <div class="boxes">
-    <img class="img-favourites" src="https://www.online-tech-tips.com/wp-content/uploads/2019/12/electronic-gadgets.jpeg">
-    <p class="information">Favourite box 2 </p>
+const getFavProducts = (user_id) => {
+  return $.ajax({
+    method: "GET",
+    url: `api/favourites/${user_id}`
+  })
+ }
+const renderFavoriteProducts = (data) => {
+  console.log(data)
+  $('.boxes').append(
+  `<div class="favorite-product" data-product-id=${data.product_id}>
+    <div class='favorited-item'>
+    <i class="fas fa-heart"></i>
+    </div>
+    <img class="img-favourites" src=${data.main_photo}>
+    <p class="information"> ${data.description} </p>
     <ul class="ul-favourites">
-      <li>text 1</li>
-      <li>text 2</li>
-      <li>text 3</li>
-      <li>text 4</li>
+      <li> Price: $${data.price} </li>
+      <li> Condition: ${data.condition} </li>
+      <li> Category: ${data.category}</li>
+      <li> Seller: ${data.user_name} </li>
     </ul>
-    <form method="POST" class="text"> Message User:
-        <input type="message" name= "message" placeholder="Type Message..."> </input>
-        <button type="submit">Submit </button>
-    </form>
-</div>
-</section>`
+  </div>`
   )
 }
 
 $(() => {
   $('.favourites-button').click(() => {
     $('.main-content').empty();
-    renderFavouritesPage();
+    renderFavouritesPage()
+    getFavProducts(1)
+      .then((datas) => {
+        for (let data of datas) {
+          renderFavoriteProducts(data)
+        }
+      })
+  })
+
+  $(document).on('click', '.favorited-item', function(e) {
+    e.preventDefault();
+    const productId = $(this).closest('.favorite-product').attr('data-product-id')
+    delFavBttn(1, productId)
+    $('.boxes').empty();
+    getFavProducts(1)
+      .then((datas) => {
+        for (let data of datas) {
+          renderFavoriteProducts(data)
+        }
+      })
   })
 })
