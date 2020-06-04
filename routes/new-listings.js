@@ -13,6 +13,7 @@ module.exports = (db) => {
     seller_id)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) returning *`, [name, condition, category, discription, mainImage, price, subImage1, subImage2, subImage3, subImage4, 1])
     .then((data) => {
+      console.log('data saved', data.rows)
       res.send(data.rows)
     })
     })

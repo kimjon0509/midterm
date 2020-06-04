@@ -54,8 +54,11 @@ $(() => {
                   phone: phone
             }
           })
-          .then((data) => {
-            console.log(data)
+          .then(res => {
+            let user = res[0];
+            $('#em').val(user.email)
+            $('#pword').val(user.password)
+            $('#login').click();
           })
         } else {
           alert('this email already being used')

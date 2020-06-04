@@ -7,23 +7,23 @@ const renderNewListings = () => {
           <input id="input-name" type="text" placeholder="Product Name" name="name" required></input>
         </label>
         <label class="labels">
-          <input id="input-sub-image2" type="text" name="text" placeholder="Sub-Image 2"></input>
+          <input id="input-sub-image2" type="url" name="text" placeholder="Sub-Image 2"></input>
         </label>
       </section>
       <section class="row1">
         <label class="labels">
-          <input id="input-price" type="text" name="price" placeholder="Price" required></input>
+          <input id="input-price" type="number" name="price" placeholder="Price" required></input>
         </label>
         <label class="labels">
-          <input id="input-sub-image3" type="text" name="text" placeholder="Sub-Image 3"></input>
+          <input id="input-sub-image3" type="url" name="text" placeholder="Sub-Image 3"></input>
         </label>
       </section>
       <section class="row1">
         <label class="labels">
-          <input id="input-sub-image1" type="text" name="text" placeholder="Sub-Image 1"></input>
+          <input id="input-sub-image1" type="url" name="text" placeholder="Sub-Image 1"></input>
         </label>
         <label class="labels">
-          <input id="input-sub-image4" type="text" name="text" placeholder="Sub-Image 4"></input>
+          <input id="input-sub-image4" type="url" name="text" placeholder="Sub-Image 4"></input>
         </label>
       </section>
       <section class="row1">
@@ -61,10 +61,10 @@ const renderNewListings = () => {
           </section>
         <section class="row1">
           <label class="labels">
-            <input id="input-main-photo" type="text" name="text" placeholder="Main Image" class="second-last"></input>
+            <input id="input-main-photo" type="text" name="url" placeholder="Main Image" class="second-last" required></input>
           </labels>
           <label class="last-label">
-            <input id="input-description" class="description-input" type="text" name="text" placeholder="Description"></input>
+            <input id="input-description" class="description-input" type="text" name="text" placeholder="Description" required></input>
           </label>
         </section>
         <section>
@@ -76,6 +76,7 @@ const renderNewListings = () => {
 }
 
 const postNewListings = (name, condition, category, discription, mainImage, price, subImage1, subImage2, subImage3, subImage4) => {
+  console.log('posting new listing')
   return $.ajax({
     method: "POST",
     url: `/api/newListings`,
@@ -121,8 +122,10 @@ $(() => {
       const subImage4 = $('#input-sub-image4').val();
 
       postNewListings(name, condition, category, discription, mainImage, price, subImage1, subImage2, subImage3, subImage4)
-      .then(res => {
-        renderProductsPage(res[0].id)
+        .then(res => {
+          console.log('new listing sucess', res)
+          $('.main-content').empty();
+          renderProductsPage(res[0].id)
       })
     })
   })
