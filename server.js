@@ -69,14 +69,51 @@ app.use("/api/dropdown", dropdownRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  db.query(`
-  SELECT *
-  FROM products;
-  `)
-  .then( response=> {
-    res.render("index", {products: response.rows});
+  let templateVars = {user: req.session.user_id};
+  if (req.session.user_id) {
+    console.log("check")
+    db.query(`
+    SELECT *
+    FROM products;
+    `)
+    .then( response=> {
+      templateVars.products = response.rows
     })
+    .then(() => {
+      getUserInfo(req.session.user_id, db)
+      .then((user) => {
+        templateVars.user_info = user
+        console.log(templateVars)
+        res.render("index", templateVars);
+      })
+    })
+  } else {
+    db.query(`
+    SELECT *
+    FROM products;
+    `)
+    .then( response=> {
+      res.render("index", {products: response.rows, user: req.session.user_id, user_info: getUserInfo(req.session.user_id, db)});
+      })
+  }
 });
+
+app.post('/logout', (req, res) => {
+  req.session = null;
+  res.redirect('/');
+});
+
+// app.get('/urls', (req, res) => {
+//   let templateVars = {
+//     urls: urlDatabase,
+//     user: users[req.session["user_id"]],
+//   };
+//   if (req.session["user_id"]) {
+//     res.render("urls_index", templateVars);
+//   } else {
+//     res.redirect('/login')
+//   }
+// });
 
 // app.get("/login", (req, res) => {
 //   db.query(`
@@ -117,6 +154,16 @@ const getUserByEmail = (email, db) => {
   })
 }
 
+const getUserInfo = (id, db) => {
+  return db.query(`
+  SELECT *
+  FROM users
+  WHERE users.id= $1`,[id])
+  .then ( (response) => {
+    console.log(response.rows[0].id);
+    return response.rows[0]
+  })
+}
 
 server.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

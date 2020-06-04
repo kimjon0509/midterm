@@ -10,7 +10,9 @@ module.exports = (db) => {
     JOIN users ON users.id = seller_id
     JOIN locations ON locations.id = products.location_id
     WHERE products.id = ${req.params.id}`)
-    .then(data => res.json(data.rows))
+    .then(data =>{
+      console.log(data.rows, 'this is data')
+      res.json(data.rows)})
   });
 
   return router;

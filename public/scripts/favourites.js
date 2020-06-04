@@ -58,8 +58,8 @@ $(() => {
       })
   })
 
-  $(document).on('click', '.favorite-product', function(e) {
-    const productId = $(this).attr('data-product-id')
+  $(document).on('click', '.img-favourites', function(e) {
+    const productId = $(this).closest('.favorite-product').attr('data-product-id');
     $('.main-content').empty();
     renderProductsPage(productId)
     .then(() => {

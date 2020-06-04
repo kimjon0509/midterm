@@ -6,10 +6,12 @@ const getProductSellerInfo = (product_id) => {
 }
 
 const renderProductsPage = (product_id) => {
+  console.log(product_id)
   return getProductSellerInfo(product_id)
     .then(res => {
       //console.log(res[0], 'test');
       let data = res[0];
+      console.log(res)
       $('.main-content').append(`
       <div class="product-page" data-product-id=${product_id}>
         <div class="top-products-page">
