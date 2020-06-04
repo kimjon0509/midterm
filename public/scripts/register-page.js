@@ -54,8 +54,8 @@ $(() => {
                   phone: phone
             }
           })
-          .then(() => {
-            res.render('index')
+          .then((data) => {
+            console.log(data)
           })
         } else {
           alert('this email already being used')
