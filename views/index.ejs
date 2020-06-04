@@ -10,6 +10,7 @@
     <script type="text/javascript" src="/scripts/new-listings.js"></script>
     <script type="text/javascript" src="/scripts/register-page.js"></script>
     <script type="text/javascript" src="/scripts/search.js"></script>
+    <script type="text/javascript" src="/scripts/dropdown.js"></script>
 
     <link rel="stylesheet" href="../styles/messages.css">
     <link rel="stylesheet" href="../styles/layout.css">
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="../styles/favourites.css">
     <link rel="stylesheet" href="../styles/new-listings.css">
     <link rel="stylesheet" href="../styles/register-page.css">
+    <link rel="stylesheet" href="../styles/listings.css">
 
 
     <link
@@ -36,13 +38,13 @@
           <div class="dropdown">
             <button class="dropbtn">Products</button>
             <div class="dropdown-content">
-              <a href="#">Laptops</a>
-              <a href="#">Monitors</a>
-              <a href="#">Phones</a>
-              <a href="#">Cameras</a>
-              <a href="#">Tablets</a>
-              <a href="#">Music</a>
-              <a href="#">Accessories</a>
+              <a class = "category-select" data-category="Laptop">Laptops</a>
+              <a class = "category-select" data-category="Monitor">Monitors</a>
+              <a class = "category-select" data-category="Phone">Phones</a>
+              <a class = "category-select" data-category="Camera">Cameras</a>
+              <a class = "category-select" data-category="Tablet">Tablets</a>
+              <a class = "category-select" data-category="Music">Music</a>
+              <a class = "category-select" data-category="Accessories">Accessories</a>
 
             </div>
           </div>
@@ -57,7 +59,7 @@
         <ul class="user-bar">
           <li id="heart"><i class="favourites-button far fa-heart"></i></li>
           <li id="chat"><i class="message-button far fa-comment-alt"></i></li>
-          <form id="myID" action="post">
+          <form id="myID" method="post" action="/login">
             <li><input id="em" type="text" name="email" placeholder="Email"/></li>
             <li><input id="pword" type="password" name="password" placeholder="Password"/></li>
             <li><input id="login" type="submit" name="login" value="Login" /></li>
@@ -72,7 +74,7 @@
             Recommendations <button class="banner-btn">shop now</button>
             <ul class="product-image">
               <li>
-                <a class='product-click-temp'
+                <a class='product-click-temp' data-product-id= <%=products[0].id%>
                   ><img id="image1"
                     type="image"
                     src=  <%= products[0].main_photo%>
@@ -80,7 +82,7 @@
                 /></a>
               </li>
               <li>
-                <a class='product-click-temp'
+                <a class='product-click-temp' data-product-id=<%=products[1].id%>
                   ><img id= "image2"
                     type="image"
                     src=<%= products[1].main_photo%>
@@ -88,7 +90,7 @@
                 /></a>
               </li>
               <li>
-                <a class='product-click-temp'
+                <a class='product-click-temp' data-product-id=<%=products[2].id%>
                   ><img id="image3"
                     type="image"
                     src=<%= products[2].main_photo%>
@@ -109,7 +111,7 @@
                 /></a>
               </li>
               <li>
-                <a class='product-click-temp'
+                <a class='product-click-temp' data-product-id=<%=products[2].id%>
                   ><img id="image5"
                     type="image"
                     src=<%= products[2].main_photo%>
@@ -117,7 +119,7 @@
                 /></a>
               </li>
               <li>
-                <a class='product-click-temp'
+                <a class='product-click-temp' data-product-id=<%=products[2].id%>
                   ><img id="image6"
                     type="image"
                     src=<%= products[2].main_photo%>
@@ -130,7 +132,7 @@
             New Product drops <button class="banner-btn">shop now</button>
             <ul class="new-products-drops">
               <li>
-                <a class='product-click-temp'
+                <a class='product-click-temp' data-product-id=<%=products[2].id%>
                   ><img id="image7"
                     type="image"
                     src=<%= products[2].main_photo%>
@@ -138,7 +140,7 @@
                 /></a>
               </li>
               <li>
-                <a class='product-click-temp'
+                <a class='product-click-temp'data-product-id=<%=products[2].id%>
                   ><img id="image8"
                     type="image"
                     src=<%= products[2].main_photo%>
@@ -146,7 +148,7 @@
                 /></a>
               </li>
               <li>
-                <a class='product-click-temp'
+                <a class='product-click-temp'data-product-id=<%=products[2].id%>
                   ><img id= "image9"
                     type="image"
                     src=<%= products[2].main_photo%>

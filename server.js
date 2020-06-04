@@ -46,6 +46,11 @@ const newListingsRoutes = require("./routes/new-listings");
 const registerPageRoutes = require("./routes/register-page");
 const messagesRoutes = require("./routes/messages");
 const productsRoutes =  require("./routes/products");
+<<<<<<< HEAD
+=======
+const searchRoutes = require("./routes/search");
+const dropdownRoutes = require("./routes/dropdown");
+>>>>>>> a9a12624c135fc25d25a0a27d06dc470e0cb2fee
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -58,6 +63,12 @@ app.use("/api/new-listings", newListingsRoutes(db));
 app.use("/api/register", registerPageRoutes(db));
 app.use("/api/messages", messagesRoutes(db, io));
 app.use("/api/products", productsRoutes(db));
+<<<<<<< HEAD
+=======
+app.use("/api/search", searchRoutes(db));
+app.use("/api/dropdown", dropdownRoutes(db));
+
+>>>>>>> a9a12624c135fc25d25a0a27d06dc470e0cb2fee
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
@@ -71,6 +82,48 @@ app.get("/", (req, res) => {
     })
 });
 
+<<<<<<< HEAD
+=======
+app.get("/login", (req, res) => {
+  db.query(`
+  SELECT email, password FROM users
+ `)
+  .then( (response) => {
+    console.log(response)
+    res.json(response.rows)
+  })
+})
+
+app.post("/login", (req, res) => {
+  console.log(req.body)
+  const {email, password} = req.body;
+  const user = getUserByEmail(email, db);
+    if (!user || !password) {
+      let templateVars = {
+        status: 401,
+        message: "Incorrect credentials"
+      }
+      res.status(401)
+    }
+   else {
+     req.session.user_id = user.id;
+     res.redirect("/");
+   }
+})
+
+const getUserByEmail = (email, db) => {
+  console.log("hello");
+  db.query(`
+  SELECT users.email FROM users
+  WHERE users.email = email`)
+  .then ( (response) => {
+    console.log(response.rows);
+    return response.rows
+  })
+}
+
+
+>>>>>>> a9a12624c135fc25d25a0a27d06dc470e0cb2fee
 server.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

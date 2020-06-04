@@ -4,17 +4,7 @@ const renderNewListings = () => {
     <form method="POST" class="listing-inputs">
       <section class="row1">
       <label class="labels">
-        <input type="text" name="text" placeholder="Product Name">
-      </label>
-        </input>
-      <label class="labels">
-        <input type="text" name="text" placeholder="Sub-Image">
-        </label>
-        </input>
-    </section>
-    <section class="row1">
-      <label class="labels">
-        <input type="text" name="text" placeholder="Price">
+        <input type="text" placeholder="Product Name" name="name" required>
       </label>
         </input>
       <label class="labels">
@@ -22,9 +12,9 @@ const renderNewListings = () => {
         </label>
         </input>
     </section>
-<section class="row1">
+    <section class="row1">
       <label class="labels">
-        <input type="text" name="text" placeholder="Product Category">
+        <input type="text" name="price" placeholder="Price" required>
       </label>
         </input>
       <label class="labels">
@@ -34,7 +24,7 @@ const renderNewListings = () => {
     </section>
 <section class="row1">
       <label class="labels">
-        <input type="text" name="text" placeholder="Main Image">
+        <input type="text" name="text" placeholder="Sub-Image 1">
       </label>
         </input>
       <label class="labels">
@@ -42,14 +32,50 @@ const renderNewListings = () => {
         </label>
         </input>
     </section>
+<section class="row1">
+      <label class="labels">
+        <div class="custom-select">
+         <select>
+           <option value="0"> Select Category:</option>
+                              <option value="1"> Phone </option>
+                              <option value="2"> Computer </option>
+                              <option value="3"> T.V </option>
+                              <option value="4"> Camera </option>
+                              <option value="5"> Video Games </option>
+                              <option value="6"> Music </option>
+                              <option value="7"> Printer </option>
+                              <option value="8"> Tablet </option>
+                              <option value="9"> Laptop </option>
+                              <option value="10"> Accessories </option>
+                              <option value="11"> Monitor </option>
+                            </select>
+                          </div>
+                        </label>
+      </label>
+        </input>
+      <label class="labels">
+        <div class="custom-select">
+    <select>
+      <option value="0"> Select Condition: </option>
+      <option value="1"> Very Bad </option>
+      <option value="2"> Bad </option>
+      <option value="3"> Good </option>
+      <option value="4"> Very Good </option>
+      <option value="5"> Excellent </option>
+      <option value="6"> Brand-new </option>
+    </select>
+  </div>
+        </label>
+        </input>
+    </section>
+<input type="text" name="text" placeholder="Main Image" class="second-last">
+</input>
   <label class="last-label">
-    <textarea class="description-input" type="text" name="text" placeholder="Description"></textarea>
+
+    <input class="description-input" type="text" name="text" placeholder="Description">
 </label>
 </input>
-<section class="under-text">
-<output name="counter" class="counter" for="description-input">400</output>
-    <button type="Submit" class="new-button">Submit Listing</button>
-    </section>
+<button type="submit" class="newListing-button">Submit</button>
       </form>`)
 }
 
