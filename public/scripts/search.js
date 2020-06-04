@@ -58,10 +58,8 @@ const productListing = (data) => {
       <li> condition: ${data.condition} </li>
       <li> category: ${data.category} </li>
     </ul>
-    <form class="title" method="POST">
-      <input type="message" name="message" placeholder="Type Message..."></input>
-      <button type="submit"> Submit </button>
-    </form>
+    <div class='favorited-item'>
+    </div>
   </div>
   `)
 }
@@ -99,7 +97,11 @@ $(() => {
           e.preventDefault();
           const productId = $(this).attr('data-product-id');
           $('.main-content').empty();
-          window.renderProductsPage(productId);
+          window.renderProductsPage(productId)
+            .then(() => {
+              console.log(productId)
+              renderFavouritesButton(1,productId)
+            });
           })
         })
       }

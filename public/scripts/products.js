@@ -11,10 +11,14 @@ const renderProductsPage = (product_id) => {
       //console.log(res[0], 'test');
       let data = res[0];
       $('.main-content').append(`
-      <div class="product-page">
-        <div class="product-title">
-          <h1>${data.product_name}</h1>
-          <p> $${data.price} </p>
+      <div class="product-page" data-product-id=${product_id}>
+        <div class="top-products-page">
+          <div class="product-title">
+            <h1>${data.product_name}</h1>
+            <p> $${data.price} </p>
+          </div>
+          <div class='favorited-item'>
+          </div>
         </div>
         <div class="centre-content">
           <div class="product-images">
@@ -82,6 +86,44 @@ const sendMessageToDatabase = (message) => {
   })
 }
 
+const checkFavourites = (user_id, product_id) => {
+  console.log(user_id, product_id)
+  return $.ajax({
+    method: "GET",
+    url: `api/favourites/?product_id=${product_id}&user_id=${user_id}`
+  })
+}
+
+const renderFavouritesButton = (user_id, product_id) => {
+  checkFavourites(user_id, product_id)
+    .then(res => {
+      if (res[0].exists === true) {
+        $('.favorited-item').append(`
+        <i class="fas fa-heart"></i>
+        `)
+      } else {
+        $('.favorited-item').append(`
+        <i class="far fa-heart"></i>
+        `)
+      }
+    }
+    )
+}
+
+const delFavBttn = (user_id, product_id) => {
+  return $.ajax({
+    method: "POST",
+    url: `api/favourites/del/?product_id=${product_id}&user_id=${user_id}`
+  })
+}
+
+const addFavBttn = (user_id, product_id) => {
+  return $.ajax({
+    method: "POST",
+    url: `api/favourites/add/?product_id=${product_id}&user_id=${user_id}`
+  })
+}
+
 $(() => {
   $('.product-click-temp').click(function(e) {
     e.preventDefault();
@@ -91,6 +133,9 @@ $(() => {
     console.log(productId, 'product_id')
     // get product id from main page img
     renderProductsPage(productId)
+      .then(() => {
+        renderFavouritesButton(1,productId)
+      })
       .then(() => {
         $('.msg-temp').click(function(e) {
           e.preventDefault();
@@ -110,8 +155,34 @@ $(() => {
           })
         });
       })
-    })
 
+      // NEED TO CHANGE USER
+    $(document).on('click', '.favorited-item', function(e) {
+      e.preventDefault();
+      const children = $('.favorited-item').children()[0];
+      const favoriteIcon = $(children).attr('class')
+      console.log(favoriteIcon)
+      if (favoriteIcon === 'fas fa-heart') {
+        console.log('dislike')
+        $('.favorited-item').empty()
+        $('.favorited-item').append(`
+        <i class="far fa-heart"></i>
+        `)
+        delFavBttn(1, productId)
+      } else {
+        console.log('like')
+        $('.favorited-item').empty()
+        $('.favorited-item').append(`
+        <i class="fas fa-heart"></i>
+        `)
+        addFavBttn(1, productId)
+      }
+    })
+    })
 })
 
 window.renderProductsPage = renderProductsPage;
+window.checkFavourites = checkFavourites;
+window.renderFavouritesButton = renderFavouritesButton;
+window.delFavBttn = delFavBttn;
+window.delFavBttn = delFavBttn;

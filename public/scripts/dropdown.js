@@ -25,8 +25,13 @@ $(() => {
         e.preventDefault();
         const productId = $(this).attr('data-product-id');
         $('.main-content').empty();
-        window.renderProductsPage(productId);
+        window.renderProductsPage(productId)
+          .then(() => {
+            console.log(productId)
+            renderFavouritesButton(1,productId)
+          });
         })
       })
   })
+
 });
