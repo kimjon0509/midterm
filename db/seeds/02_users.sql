@@ -1,3 +1,4 @@
+insert into users (name, profile_photo, email, password, phone_number, location_id) values ('Admin', 'http://dummyimage.com/187x216.jpg/cc0000/ffffff', 'admin@admin.com', 'admin', '126-583-2065', 477);
 insert into users (name, profile_photo, email, password, phone_number, location_id) values ('Bertie', 'http://dummyimage.com/187x216.jpg/cc0000/ffffff', 'bkibblewhite0@shop-pro.jp', '2h64cJ2qX', '126-583-2065', 477);
 insert into users (name, profile_photo, email, password, phone_number, location_id) values ('Vernon', 'http://dummyimage.com/118x144.png/cc0000/ffffff', 'vwelden1@gizmodo.com', 'U4S43PfVku', '600-101-5651', 1613);
 insert into users (name, profile_photo, email, password, phone_number, location_id) values ('Bethena', 'http://dummyimage.com/189x218.png/cc0000/ffffff', 'bcurnok2@reuters.com', 'FlnUOTQrE9K', '774-324-7394', 2490);
