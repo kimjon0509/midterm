@@ -6,6 +6,9 @@
 }
 
 .listings-title {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
+  color: #3e4153;
   display: flex;
   justify-content: center;
 }
@@ -14,9 +17,11 @@
   flex-direction: row;
   justify-content: center;
 }
-.filter-button {
-  margin-left: 45%;
-  margin-right: 45%;
+
+.search-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .total-boxes {
@@ -26,12 +31,17 @@
 }
 .boxes_home_page {
   border: solid;
+  border-color: #55d6aa;
   width: 25%;
   margin: 2.5em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
+}
+.boxes_home_page:hover {
+  visibility: visible;
+  box-shadow: 3.5px 3.5px rgb(129, 38, 38);
 }
 
 .title {
@@ -51,13 +61,15 @@
 }
 
 .features {
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   width: 50%;
   word-break: break all;
 }
 #Name {
-  font-size: 150%;
-  font-weight: bold;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
+  font-size: 120%;
+  color: #3e4153;
 }

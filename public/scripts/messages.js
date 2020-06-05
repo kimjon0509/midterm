@@ -91,10 +91,7 @@ const renderMessageUser = (message_id) => {
     `)
     $('.message-bubble').append(`
       <ul class="message-list">
-        <li class="him">Hello, I would like to purchase this item</li>
-        <li class="me">Sure</li>
-        <li class="him">When are you available</li>
-        <li class="me">I am free tomorrow after 5pm</li>
+        <li class="me">Hello, I would like to purchase this item</li>
       </ul>
     `)
 
