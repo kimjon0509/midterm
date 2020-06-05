@@ -42,7 +42,7 @@ const renderProductsPage = (product_id) => {
                 <h3>${data.user_name}</h3>
               </div>
               <div class="user-image">
-                <img src=${data.profile_photo}alt="">
+                <img src=${data.profile_photo} alt="">
               </div>
             </div>
             <div class="message-user">
