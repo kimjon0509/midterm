@@ -1,8 +1,11 @@
 .title {
   text-align: center;
+  font-family: Larsseit, Arial, sans-serif;
+  font-weight: 300;
 }
 .delete-product {
   border: solid;
+  border-color: #55d6aa;
   margin: 1em;
   display: flex;
   justify-content: space-around;
@@ -10,12 +13,16 @@
   width: 95%;
   font-size: large;
 }
+.delete-product:hover {
+  visibility: visible;
+  box-shadow: 3.5px 3.5px rgb(129, 38, 38);
+}
 
 .boxes {
   width: 50%;
   margin: 0 auto;
 }
-  /* being overwritten by img in messages.scss file */
+/* being overwritten by img in messages.scss file */
 .img-my-product {
   width: 150px;
   height: 150px;
@@ -32,12 +39,12 @@
   width: 20%;
   display: flex;
   flex-direction: column;
-  margin-top: 2.0em;
+  margin-top: 2em;
   padding-left: 0px;
 }
 
 .text {
-align-items: center;
+  align-items: center;
   margin-right: 0.5em;
   display: flex;
   flex-direction: column;
