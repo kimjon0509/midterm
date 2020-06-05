@@ -1,5 +1,5 @@
 const getProductSellerInfo = (product_id) => {
-  console.log('product_id ',product_id)
+  console.log('product_id ', product_id)
  return $.ajax({
   method: "GET",
   url: `/api/products/${product_id}`
@@ -42,7 +42,7 @@ const renderProductsPage = (product_id) => {
                 <h3>${data.user_name}</h3>
               </div>
               <div class="user-image">
-                <img src=${data.profile_photo}alt="">
+                <img src=${data.profile_photo} alt="">
               </div>
             </div>
             <div class="message-user">
@@ -77,7 +77,7 @@ const renderProductsPage = (product_id) => {
 }
 
 const sendMessageToDatabase = (message, product_id) => {
-  console.log(message, "this is the message")
+  console.log(message, product_id, "this is the message")
   return getProductSellerInfo(product_id)
     .then((res) => {
       let data = res[0];

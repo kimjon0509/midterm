@@ -11,6 +11,7 @@
     <script type="text/javascript" src="/scripts/register-page.js"></script>
     <script type="text/javascript" src="/scripts/search.js"></script>
     <script type="text/javascript" src="/scripts/dropdown.js"></script>
+    <script type="text/javascript" src="/scripts/myProduct.js"></script>
 
     <link rel="stylesheet" href="../styles/messages.css">
     <link rel="stylesheet" href="../styles/layout.css">
@@ -21,6 +22,7 @@
     <link rel="stylesheet" href="../styles/new-listings.css">
     <link rel="stylesheet" href="../styles/register-page.css">
     <link rel="stylesheet" href="../styles/listings.css">
+    <link rel="stylesheet" href="../styles/myProduct.css">
 
 
     <link
@@ -59,6 +61,7 @@
         <ul class="user-bar">
           <li id="heart"><i class="favourites-button far fa-heart"></i></li>
           <li id="chat"><i class="message-button far fa-comment-alt"></i></li>
+          <li id="my-product"><i class="my-product far fa-list-alt"></i></li>
           <% if (!user) {%>
           <form id="myID" method="post" action="/login">
             <li><input id="em" type="text" name="email" placeholder="Email"/></li>
@@ -81,18 +84,18 @@
             Recommendations <button class="banner-btn">shop now</button>
             <ul class="product-image">
               <li>
-                <a class='product-click-temp' data-product-id= <%=products[0].id%>
+                <a class='product-click-temp' data-product-id= <%=products[4].id%>
                   ><img class= "product-mainimage"
                     type="image"
-                    src=  <%= products[0].main_photo%>
+                    src=  <%= products[4].main_photo%>
                     alt="Submit"
                 /></a>
               </li>
               <li>
-                <a class='product-click-temp' data-product-id=<%=products[1].id%>
+                <a class='product-click-temp' data-product-id=<%=products[7].id%>
                   ><img class= "product-mainimage"
                     type="image"
-                    src=<%= products[1].main_photo%>
+                    src=<%= products[7].main_photo%>
                     alt="Submit"
                 /></a>
               </li>
@@ -110,26 +113,26 @@
             Price Drops <button class="banner-btn">shop now</button>
             <ul class="price-drop">
               <li>
-                <a class='product-click-temp'
+                <a class='product-click-temp' data-product-id=<%=products[1].id%>
                   ><img class= "product-mainimage"
                     type="image"
-                    src=<%= products[2].main_photo%>
+                    src=<%= products[1].main_photo%>
                     alt="Submit"
                 /></a>
               </li>
               <li>
-                <a class='product-click-temp' data-product-id=<%=products[2].id%>
+                <a class='product-click-temp' data-product-id=<%=products[6].id%>
                   ><img class= "product-mainimage"
                     type="image"
-                    src=<%= products[2].main_photo%>
+                    src=<%= products[6].main_photo%>
                     alt="Submit"
                 /></a>
               </li>
               <li>
-                <a class='product-click-temp' data-product-id=<%=products[2].id%>
+                <a class='product-click-temp' data-product-id=<%=products[7].id%>
                   ><img class= "product-mainimage"
                     type="image"
-                    src=<%= products[2].main_photo%>
+                    src=<%= products[7].main_photo%>
                     alt="Submit"
                 /></a>
               </li>
@@ -139,26 +142,26 @@
             New Product drops <button class="banner-btn">shop now</button>
             <ul class="new-products-drops">
               <li>
-                <a class='product-click-temp' data-product-id=<%=products[2].id%>
+                <a class='product-click-temp' data-product-id=<%=products[6].id%>
                   ><img class= "product-mainimage"
                     type="image"
-                    src=<%= products[2].main_photo%>
+                    src=<%= products[6].main_photo%>
                     alt="Submit"
                 /></a>
               </li>
               <li>
-                <a class='product-click-temp'data-product-id=<%=products[2].id%>
+                <a class='product-click-temp'data-product-id=<%=products[3].id%>
                   ><img class= "product-mainimage"
                     type="image"
-                    src=<%= products[2].main_photo%>
+                    src=<%= products[3].main_photo%>
                     alt="Submit"
                 /></a>
               </li>
               <li>
-                <a class='product-click-temp'data-product-id=<%=products[2].id%>
+                <a class='product-click-temp'data-product-id=<%=products[4].id%>
                   ><img class= "product-mainimage"
                     type="image"
-                    src=<%= products[2].main_photo%>
+                    src=<%= products[4].main_photo%>
                     alt="Submit"
                 /></a>
               </li>
