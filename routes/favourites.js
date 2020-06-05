@@ -45,7 +45,7 @@ module.exports = (db) => {
 
   router.get("/:id",(req, res) => {
     db.query(`
-    SELECT products.id as product_id, products.main_photo as main_photo, products.description, products.price, products.condition, users.name as user_name
+    SELECT products.id as product_id, products.main_photo as main_photo, products.description, products.price, products.condition, products.category, users.name as user_name
     FROM favourites
     JOIN products ON product_id = products.id
     JOIN users ON seller_id = users.id
