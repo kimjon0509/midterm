@@ -90,22 +90,11 @@ const renderMessageUser = (message_id) => {
       <h2> ${details.user_name} </h2>
     `)
     $('.message-bubble').append(`
-      <ul class="">
-        <li class="him">By Other User</li>
-        <li class="me">By this User, first message</li>
-        <li class="me">By this User, secondmessage</li>
-        <li class="me">By this User, third message</li>
-        <li class="me">By this User, fourth message</li>
-      <li class="him">By Other User</li>
-        <li class="me">By this User, first message</li>
-        <li class="me">By this User, secondmessage</li>
-        <li class="me">By this User, third message</li>
-        <li class="me">By this User, fourth message</li>
-      <li class="him">By Other User</li>
-        <li class="me">By this User, first message</li>
-        <li class="me">By this User, secondmessage</li>
-        <li class="me">By this User, third message</li>
-        <li class="me">By this User, fourth message</li>
+      <ul class="message-list">
+        <li class="him">Hello, I would like to purchase this item</li>
+        <li class="me">Sure</li>
+        <li class="him">When are you available</li>
+        <li class="me">I am free tomorrow after 5pm</li>
       </ul>
     `)
 
@@ -160,8 +149,8 @@ const renderMessagesPage = () => {
         </div>
       </div>
       <div class="text-area">
-        <form action="" method="POST">
-          <textarea placeholder="Type a message..."></textarea>
+        <form class="message-form" >
+          <textarea class="message-form-message" placeholder="Type a message..."></textarea>
           <div class="send-button">
             <button class="send-message" type="submit" value="send">
               <i class="fas fa-paper-plane"></i>
@@ -197,6 +186,12 @@ $(() => {
       $('.message-bubble').empty();
       $('.messages-detail-bar').empty();
       renderMessageUser(message_id);
+
+      $(document).on("submit", '.message-form' , function(e) {
+        e.preventDefault();
+        const message = $(this).children('.message-form-message').val();
+        $('.message-list').append(`<li class="me">${message}</li>`)
+    })
   })
   })
 })

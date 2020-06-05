@@ -50,6 +50,7 @@ const messagesRoutes = require("./routes/messages");
 const productsRoutes =  require("./routes/products");
 const searchRoutes = require("./routes/search");
 const dropdownRoutes = require("./routes/dropdown");
+const myProducts = require("./routes/myProduct");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -64,6 +65,7 @@ app.use("/api/messages", messagesRoutes(db, io));
 app.use("/api/products", productsRoutes(db));
 app.use("/api/search", searchRoutes(db));
 app.use("/api/dropdown", dropdownRoutes(db));
+app.use("/api/myproducts", myProducts(db) );
 
 // Home page
 // Warning: avoid creating more routes in this file!
