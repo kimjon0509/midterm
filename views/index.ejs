@@ -11,6 +11,7 @@
     <script type="text/javascript" src="/scripts/register-page.js"></script>
     <script type="text/javascript" src="/scripts/search.js"></script>
     <script type="text/javascript" src="/scripts/dropdown.js"></script>
+    <script type="text/javascript" src="/scripts/myProduct.js"></script>
 
     <link rel="stylesheet" href="../styles/messages.css">
     <link rel="stylesheet" href="../styles/layout.css">
@@ -21,6 +22,7 @@
     <link rel="stylesheet" href="../styles/new-listings.css">
     <link rel="stylesheet" href="../styles/register-page.css">
     <link rel="stylesheet" href="../styles/listings.css">
+    <link rel="stylesheet" href="../styles/myProduct.css">
 
 
     <link
@@ -59,6 +61,7 @@
         <ul class="user-bar">
           <li id="heart"><i class="favourites-button far fa-heart"></i></li>
           <li id="chat"><i class="message-button far fa-comment-alt"></i></li>
+          <li id="my-product"><i class="my-product far fa-list-alt"></i></li>
           <% if (!user) {%>
           <form id="myID" method="post" action="/login">
             <li><input id="em" type="text" name="email" placeholder="Email"/></li>

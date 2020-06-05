@@ -92,39 +92,58 @@ $(() => {
             productListing(datas[i])
           }
         })
-        .then(() => {
+        // .then(() => {
+          // $('.boxes_home_page').click(function(e) {
+          // e.preventDefault();
+          // const productId = $(this).attr('data-product-id');
+          // console.log('this is product id ', productId)
+          // $('.main-content').empty();
+          //   renderProductsPage(productId)
+          //   .then(() => {
+          //     console.log(productId)
+          //     //super user
+          //     renderFavouritesButton(1,productId)
+          //   })
+            // .then(() => {
+            //   $('.msg-temp').click(function(e) {
+            //     e.preventDefault();
+            //     const val = $(this).text();
+            //     $('textarea').val(val)
+            //     })
+            // })
+
+              //   .then(() => {
+              //     console.log('sent data reset form')
+              //     $('.message-user').empty();
+              //     $('.message-user').append(`
+              //     <p> Message Sent! </p>
+              //     `)
+              // });
+            // });
+          // })
           $('.boxes_home_page').click(function(e) {
-          e.preventDefault();
-          const productId = $(this).attr('data-product-id');
-          $('.main-content').empty();
-            renderProductsPage(productId)
-            .then(() => {
-              console.log(productId)
-              renderFavouritesButton(1,productId)
-            })
-            .then(() => {
-              $('.msg-temp').click(function(e) {
-                e.preventDefault();
-                const val = $(this).text();
-                $('textarea').val(val)
-                $('.message-to-user').submit(function(e){
-                e.preventDefault();
-                const $data = $('textarea').val()
-                sendMessageToDatabase($data)
-                .then(() => {
-                  console.log('sent data reset form')
-                  $('.message-user').empty();
-                  $('.message-user').append(`
-                  <p> Message Sent! </p>
-                  `)
-                  })
-                })
-              });
-            });
+            e.preventDefault();
+            const productId = $(this).attr('data-product-id');
+            console.log('this is product id ', productId)
+            $('.main-content').empty();
+              renderProductsPage(productId)
+              .then(() => {
+                console.log(productId)
+                //super user
+                renderFavouritesButton(1,productId)
+              })
           })
-        })
-      }
+    }
     })
+
+    // $('.message-to-user').submit(function(e){
+    //   e.preventDefault();
+    //   const $data = $('textarea').val()
+    //   const productId = $(this).closest("div").find(".data-product-id")
+    //   console.log('checking data',$data)
+    //   console.log('message to user', productId)
+    //   sendMessageToDatabase($data, productId)
+    //   })
 });
 
 
