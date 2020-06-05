@@ -5,28 +5,15 @@ const listingPage = () => {
         <h3 class="listings-title"> Filters </h3>
         <form class="search-form" method="POST">
           <section class="filters">
-            <input type="integer" placeholder="Minimum Price"></input>
-            <input type="integer" placeholder="Maximum Price"></input>
-          </section>
-          <section class="filters">
             <div class="custom-select">
-              <select>
-                <option value="0"> Select Category:</option>
-                <option value="1"> Phone </option>
-                <option value="2"> Computer </option>
-                <option value="3"> T.V </option>
-                <option value="4"> Camera </option>
-                <option value="5"> Video Games </option>
-                <option value="6"> Music </option>
-                <option value="7"> Printer </option>
-                <option value="8"> Tablet </option>
-                <option value="9"> Laptop </option>
-                <option value="10"> Accessories </option>
-                <option value="11"> Monitor </option>
+              <select id="price-select">
+                <option value="0"> Select Price:</option>
+                <option value="1"> Price Low-High </option>
+                <option value="2"> Price High-Low </option>
               </select>
             </div>
           <div class="custom-select">
-            <select>
+            <select id="condition-select-search">
               <option value="0"> Select Condition: </option>
               <option value="1"> Very Bad </option>
               <option value="2"> Bad </option>
@@ -36,8 +23,8 @@ const listingPage = () => {
               <option value="6"> Brand-new </option>
             </select>
           </div>
-          </section>
           <button type="submit" class="filter-button">Submit</button>
+          </section>
       </form>
       <section class="total-boxes">
 
@@ -77,12 +64,12 @@ $(() => {
       console.log('key pressed')
       let url = '';
       e.preventDefault();
-      const search_val = $('.search-input').val().split(' ');
-      for (let i in search_val) {
+      const searchVal = $('.search-input').val().split(' ');
+      for (let i in searchVal) {
         if (i === 0 || i === '0') {
-          url += `?search${i}=${search_val[i]}`
+          url += `?search${i}=${searchVal[i]}`
         } else {
-          url += `&search${i}=${search_val[i]}`
+          url += `&search${i}=${searchVal[i]}`
         }
       }
       listingPage()
@@ -92,7 +79,109 @@ $(() => {
             productListing(datas[i])
           }
         })
-        // .then(() => {
+      $('.boxes_home_page').click(function(e) {
+        e.preventDefault();
+        const productId = $(this).attr('data-product-id');
+        console.log('this is product id ', productId)
+        $('.main-content').empty();
+          renderProductsPage(productId)
+          .then(() => {
+            console.log(productId)
+            //super user
+            renderFavouritesButton(1,productId)
+          })
+      })
+    }
+    })
+  $(document).on('submit', '.search-form', function(e) {
+    e.preventDefault();
+    let url = '';
+    let queryStart = true;
+    const searchVal = $('.search-input').val().split(' ');
+    const condition = $("#condition-select-search option:selected").val();
+    const price = $("#price-select option:selected").val();
+    console.log(searchVal, condition, price)
+    if (searchVal.length !== 0) {
+      for (let i in searchVal) {
+        if (i === 0 || i === '0') {
+          url += `?search${i}=${searchVal[i]}`
+          queryStart = false;
+        } else {
+          url += `&search${i}=${searchVal[i]}`
+        }
+      }
+    }
+
+    if (condition != 0) {
+      if(queryStart) {
+        if (condition == 1) {
+          url += `?condition=Very Bad`;
+        } else if (condition == 2) {
+          url += `?condition=Bad`;
+        } else if (condition == 3) {
+          url += `?condition=Good`;
+        } else if (condition == 4) {
+          url += `?condition=Very Good`;
+        } else if (condition == 5) {
+          url += `?condition=Excellent`
+        } else if (condition == 6) {
+          url += `?condition=Brand-new`
+        }
+        queryStart = false;
+      } else {
+        if (condition == 1) {
+          url += `&condition=Very Bad`;
+        } else if (condition == 2) {
+          url += `&condition=Bad`;
+        } else if (condition == 3) {
+          url += `&condition=Good`;
+        } else if (condition == 4) {
+          url += `&condition=Very Good`;
+        } else if (condition == 5) {
+          url += `&condition=Excellent`
+        } else if (condition == 6) {
+          url += `&condition=Brand-new`
+        }
+      }
+    }
+
+    if (price != 0) {
+      if(queryStart) {
+        if (price == 1) {
+          url += `?price=low-high`;
+        } else if (price == 2) {
+          url += `?price=high-low`;
+        }
+        queryStart = false;
+      } else {
+        if (price == 1) {
+          url += `&price=low-high`;
+        } else if (price == 2) {
+          url += `&price=high-low`;
+        }
+      }
+    }
+
+    listingPage()
+    getSearchVal(url)
+      .then(datas => {
+        console.log(datas)
+        for (let i in datas) {
+          productListing(datas[i])
+        }
+      })
+  })
+
+    // $('.message-to-user').submit(function(e){
+    //   e.preventDefault();
+    //   const $data = $('textarea').val()
+    //   const productId = $(this).closest("div").find(".data-product-id")
+    //   console.log('checking data',$data)
+    //   console.log('message to user', productId)
+    //   sendMessageToDatabase($data, productId)
+    //   })
+
+    // .then(() => {
           // $('.boxes_home_page').click(function(e) {
           // e.preventDefault();
           // const productId = $(this).attr('data-product-id');
@@ -121,29 +210,6 @@ $(() => {
               // });
             // });
           // })
-          $('.boxes_home_page').click(function(e) {
-            e.preventDefault();
-            const productId = $(this).attr('data-product-id');
-            console.log('this is product id ', productId)
-            $('.main-content').empty();
-              renderProductsPage(productId)
-              .then(() => {
-                console.log(productId)
-                //super user
-                renderFavouritesButton(1,productId)
-              })
-          })
-    }
-    })
-
-    // $('.message-to-user').submit(function(e){
-    //   e.preventDefault();
-    //   const $data = $('textarea').val()
-    //   const productId = $(this).closest("div").find(".data-product-id")
-    //   console.log('checking data',$data)
-    //   console.log('message to user', productId)
-    //   sendMessageToDatabase($data, productId)
-    //   })
 });
 
 
